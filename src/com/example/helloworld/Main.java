@@ -14,8 +14,10 @@ public class Main {
 //        sp.getStringPermutations(input).forEach(s->System.out.println(s));
 
 
-        LetterTilePossibilities ltp = new LetterTilePossibilities();
-        String input = "AAB";
-        ltp.getStringSubsetsPermutations(input).forEach(s -> System.out.println(s));
+//        LetterTilePossibilities ltp = new LetterTilePossibilities();
+//        String input = "AAB";
+//        ltp.getStringSubsetsPermutations(input).forEach(s -> System.out.println(s));
+
+        System.out.println("helloworld");
     }
 }
