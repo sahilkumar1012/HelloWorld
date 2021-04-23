@@ -18,6 +18,6 @@ public class Main {
 //        String input = "AAB";
 //        ltp.getStringSubsetsPermutations(input).forEach(s -> System.out.println(s));
 
-        System.out.println("helloworld");
+        System.out.println("hellow orld");
     }
 }
