@@ -42,6 +42,7 @@ public class CountingBits {
 
         for (int i = 1; i <= num; ++i) {
             dp[i] = dp[i / 2] + i % 2; // even or odd case.
+//            dp[i] = dp[i / 2] + ( i & 1 ); // even or odd case. , (or just take & with 1))
         }
         return dp;
     }

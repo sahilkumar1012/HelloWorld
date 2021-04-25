@@ -39,7 +39,7 @@ class MergeIntervalsTest {
 
 public class MergeIntervals {
     public int[][] merge(int[][] intervals) {
-        // sort intervals
+        // sort intervals based on starting value.
         Arrays.sort(intervals, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
@@ -67,6 +67,7 @@ public class MergeIntervals {
             res.add(new Integer[]{intervals[i][0], intervals[i][1]});
         }
 
+        // converting back to 2d array
         int[][] ans = new int[res.size()][2];
         for (i = 0; i < res.size(); ++i) {
             ans[i][0] = res.get(i)[0];

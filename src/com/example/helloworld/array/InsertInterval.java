@@ -53,6 +53,9 @@ class InsertIntervalMain{
     }
 }
 public class InsertInterval {
+    /*
+    given intervals are sorted.
+     */
     public int[][] insert(int[][] intervals, int[] newInterval) {
         int n = intervals.length;
         if(n==0){
