@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 /**
  * leetcode 91. Decode Ways
- * 
+ *
  * A message containing letters from A-Z can be encoded into numbers using the following mapping:
  *
  * 'A' -> "1"
@@ -92,9 +92,12 @@ public class DecodeWays {
         return sum;
     }
 
+    /*
+    Nice easy dp solution.
+     */
     public int numDecodings(String s) {
         int n = s.length();
-        if(n==0 || s.charAt(0)=='0') return 0;
+        if(n==0 || s.charAt(0)=='0') return 0;  // corner case, starting mai zero ko can't decode.
 
         int dp[] = new int[n+1]; // initialized with 0
         dp[0] = 1; // dummy.

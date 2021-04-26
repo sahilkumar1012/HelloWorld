@@ -37,14 +37,17 @@ class MergeIntervalsTest {
     }
 }
 
+/**
+ * Morgan Stanley question.
+ */
 public class MergeIntervals {
     public int[][] merge(int[][] intervals) {
-        // sort intervals based on starting value.
+        // sort intervals
         Arrays.sort(intervals, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0])
-                    return o1[1] - o2[1];
+                if(o1[0] == o2[0])
+                    return o1[1]-o2[1];
                 return o1[0] - o2[0];
             }
         });
@@ -52,28 +55,25 @@ public class MergeIntervals {
         ArrayList<Integer[]> res = new ArrayList<>();
 
         int n = intervals.length;
-        int i = 0;
-        for (i = 0; i < n - 1; ++i) {
-            int start = intervals[i][0], end = intervals[i][1];
-            while (i < n - 1 && intervals[i + 1][0] <= end) {
-                start = Math.min(start, intervals[i + 1][0]);
-                end = Math.max(end, intervals[i + 1][1]);
+        int i=0;
+
+        for(i=0; i<n; ++i){
+            int start = intervals[i][0], end = intervals[i][1]; // pakdo sale ko.
+
+            while(i+1 <= n-1 && intervals[i+1][0]<=end){      // aage wala koi merge hora h to kardo
+                start = Math.min(start, intervals[i+1][0]);
+                end = Math.max(end, intervals[i+1][1]);
                 ++i;
             }
-            res.add(new Integer[]{start, end});
-        }
-        // whether an element is left in the last.
-        if (i == n - 1) {
-            res.add(new Integer[]{intervals[i][0], intervals[i][1]});
+            res.add(new Integer[]{start,end});
         }
 
-        // converting back to 2d array
+        // convert res list to 2d array and return.
         int[][] ans = new int[res.size()][2];
-        for (i = 0; i < res.size(); ++i) {
+        for(i=0; i<res.size(); ++i){
             ans[i][0] = res.get(i)[0];
             ans[i][1] = res.get(i)[1];
         }
-
         return ans;
     }
 }
