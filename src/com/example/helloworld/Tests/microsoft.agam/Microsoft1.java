@@ -1,18 +1,18 @@
-package com.example.helloworld.dump;
+package com.example.helloworld.Tests.microsoft.agam;
 
-import java.time.Period;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.TreeSet;
-import java.util.stream.Stream;
+/**
+ * questions asked in agam's microsoft test.
+ */
+public class Microsoft1 {
 
-class Dump {
     public static void main(String[] args) {
         System.out.println(solution("<<^<V>>"));
     }
 
     /**
      * asked in microsoft, agam's test.
+     *
+     * valid moves players can perfom upr niche dae bae.
      * @param s
      * @return
      */
@@ -49,4 +49,3 @@ class Dump {
     }
 
 }
-
