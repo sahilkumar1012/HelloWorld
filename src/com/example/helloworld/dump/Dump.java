@@ -3,12 +3,15 @@ package com.example.helloworld.dump;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TreeSet;
 import java.util.stream.Stream;
 
 class Dump {
     public static void main(String[] args) {
-        System.out.println(solution("<<^<V>>"));
+//        System.out.println(solution("<<^<V>>"));
+        int arr[] = new int[]{1,21,31,41,51};
+        System.out.println(Arrays.binarySearch(arr,0,1,1));
     }
 
     /**
