@@ -1,4 +1,4 @@
-package com.example.helloworld.Tests.microsoft.agam;
+package com.example.helloworld.tests.microsoft.agam;
 
 /**
  * https://www.geeksforgeeks.org/longest-increasing-subarray/

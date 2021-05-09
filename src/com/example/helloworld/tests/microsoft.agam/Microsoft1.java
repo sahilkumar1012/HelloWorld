@@ -1,4 +1,4 @@
-package com.example.helloworld.Tests.microsoft.agam;
+package com.example.helloworld.tests.microsoft.agam;
 
 /**
  * questions asked in agam's microsoft test.
