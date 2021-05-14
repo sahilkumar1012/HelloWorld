@@ -1,4 +1,4 @@
 /out/
 /.idea/
 .DS_Store
-src/com/example/helloworld/dump/Dump.java
+/src/com/example/helloworld/dump/Dump.java
