@@ -1,8 +1,9 @@
-package com.example.helloworld.adobe;
+package com.example.helloworld.interviews.chirag.adobe;
 
 
+import com.example.helloworld.linkedlist.model.ListNode;
 
-class Solution1 {
+class Round1 {
 
     public static class LinkList {
         LinkList next;
@@ -14,6 +15,8 @@ class Solution1 {
     }
 
     public static void main(String[] args) {
+        ListNode l = new ListNode();
+
         System.out.println("Chirag's solution. I'm better now.");
         LinkList head=new LinkList(1);
         head.next =new LinkList(2);
