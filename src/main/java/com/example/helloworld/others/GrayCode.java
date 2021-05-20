@@ -48,8 +48,7 @@ public class GrayCode {
         res.add(1);
 
         for(int i=1;i<n;i++){
-            for(int j=res.size()-1;j>=0;j--)
-            {
+            for(int j=res.size()-1;j>=0;j--) {
                 res.add(res.get(j)|(1<<i));
             }
         }
