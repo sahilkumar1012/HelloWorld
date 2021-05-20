@@ -14,7 +14,7 @@ class Solution1 {
     }
 
     public static void main(String[] args) {
-        System.out.println("Chirag's solution. yo");
+        System.out.println("Chirag's solution. I'm better now.");
         LinkList head=new LinkList(1);
         head.next =new LinkList(2);
         head.next.next=new LinkList(3);
