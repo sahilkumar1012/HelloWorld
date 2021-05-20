@@ -11,7 +11,7 @@ public class ReverseLinkedList {
         head.next.next=new ListNode(3);
 
        // head= new ReverseLinkedList().reverseByIteration(head);
-        head = new ReverseLinkedList().reverseByRecursion(head);
+        head = new ReverseLinkedList().reverseRecursively(head);
         LinkedListUtil.printLinkedList(head);
 
     }
@@ -34,6 +34,11 @@ public class ReverseLinkedList {
         return prev;
     }
 
+    /**
+     * chirag bhai ka recursion hai ye khud ka.
+     * @param head
+     * @return
+     */
     public ListNode reverseByRecursion(ListNode head){
              return reverseByRecursionHelper(null,head);
     }
@@ -47,4 +52,22 @@ public class ReverseLinkedList {
         head.next=prev;
         return temp;
     }
+
+    /**
+     * Reversing a linked list recursively, took reference from geeksforgeeks.
+     * @param head
+     * @return
+     */
+    public ListNode reverseRecursively(ListNode head){
+        if(head == null || head.next == null)
+            return head;
+
+        ListNode temp = reverseRecursively(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return temp;
+    }
+
+
 }
