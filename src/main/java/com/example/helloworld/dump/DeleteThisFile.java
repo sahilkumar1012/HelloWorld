@@ -2,27 +2,40 @@ package com.example.helloworld.dump;
 
 import java.util.*;
 
-//public class DeleteThisFile {
-//    public List<List<Integer>> minimumAbsDifference(int[] arr) {
-//        Arrays.sort(arr);
-//        List<List<Integer>> ans = new ArrayList<>();
-//        List<Integer> temp;
-//        int mad = Integer.MAX_VALUE; // maximum absolute difference.
-//
-//        for(int i=1; i<arr.length; ++i){
-//            if(Math.abs(arr[i]-arr[i-1]) < mad){            // this pair is better.
-//                mad = Math.abs(arr[i]-arr[i-1]);
-//                ans.clear();
-//            }
-//            if(Math.abs(arr[i]-arr[i-1]) == mad){     // we also need to consider this pair
-//                temp = new ArrayList<>();
-//                temp.add(arr[i-1]); temp.add(arr[i]);
-//                ans.add(temp);
-//            }
-//        }
-//        return ans;
-//    }
-//}
+
+public class DeleteThisFile {
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+        for(int a : nums){
+            pq.offer(a);
+            if(pq.size() > k)
+                pq.poll();
+        }
+        return pq.poll();
+//        Arrays.sort(nums);
+//        return nums[nums.length-k];
+    }
+
+    public List<List<Integer>> minimumAbsDifference(int[] arr) {
+        Arrays.sort(arr);
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> temp;
+        int mad = Integer.MAX_VALUE; // maximum absolute difference.
+
+        for(int i=1; i<arr.length; ++i){
+            if(Math.abs(arr[i]-arr[i-1]) < mad){            // this pair is better.
+                mad = Math.abs(arr[i]-arr[i-1]);
+                ans.clear();
+            }
+            if(Math.abs(arr[i]-arr[i-1]) == mad){     // we also need to consider this pair
+                temp = new ArrayList<>();
+                temp.add(arr[i-1]); temp.add(arr[i]);
+                ans.add(temp);
+            }
+        }
+        return ans;
+    }
+}
 
 
 
