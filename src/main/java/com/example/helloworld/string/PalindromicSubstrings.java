@@ -73,4 +73,39 @@ public class PalindromicSubstrings {
         }
         return count;
     }
+
+    // DP Solution
+
+    public int countSubstringsDP(String s) {
+        int n = s.length();
+        boolean[][] dp=new boolean[n][n];
+        int count=0;
+        for(int i=0;i<n;i++){
+            dp[i][i]=true;
+            count++;
+        }
+        for(int i=1;i<n;i++)
+        {
+            if(s.charAt(i)==s.charAt(i-1)){
+                dp[i-1][i]=true;
+                count++;
+            }
+        }
+        for(int len=3;len<=n;len++){
+            int i=0;
+            int j=i+len-1;
+            while(j<n){
+                if(s.charAt(j)==s.charAt(i) && dp[i+1][j-1]){
+                    dp[i][j]=true;
+                    count++;
+                }
+                j++;
+                i++;
+            }
+
+        }
+
+
+        return count;
+    }
 }
