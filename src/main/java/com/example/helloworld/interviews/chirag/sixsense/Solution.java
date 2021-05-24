@@ -25,6 +25,42 @@ class Index{
  *
  * 1. Word Seek Please read the instructions carefully. Given a grid of letters, find the words in the grid. The letters can be in straight sequence in any of the directions from the first character of the word. All words might not be in the grid. Print the word and the start row and column position for each word that is found. For words that are not found, print -1 for both the row and column position. All indices start from 0 The accepted solution should have the lowest complexity ie. You should iterate over the grid of characters only once (not once per word). ie. If there are "n" words given, don't parse through the grid "n" times. The input words are sorted alphabetically. The output words should also be sorted.
  *
+ *
+ * Sample case which i run locally :
+
+ ELEKTRAHTHORGV
+ SILVERAORWTNSH
+ AUAUAWREHSINUP
+ HNERKCTNWHAMRR
+ AFTEHSIITMASFA
+ ICYMILDRRNCAEA
+ IEIMAOIEEAERRL
+ WWYTWNDVRMGEIO
+ INVIDIBLEGAGRO
+ TDHSPAEOHDCNOP
+ CIOSKTTZTGEAND
+ HFKOKPRNNLKRMA
+ EBWOMANPAEUTAE
+ UOFALCONPFLSND
+
+ ANTMAN
+ DAREDEVIL
+ DEADPOOL
+ ELEKTRA
+ HAWKEYE
+ PUNISHER
+ THING
+ WITCH
+
+ ANTMAN 2 0
+ DAREDEVIL 13 13
+ DEADPOOL 13 13
+ ELEKTRA 0 0
+ HAWKEYE 0 7
+ PUNISHER 2 13
+ THING 4 8
+ WITCH 7 0
+
  */
 public class Solution {
     HashSet<String> set ;
