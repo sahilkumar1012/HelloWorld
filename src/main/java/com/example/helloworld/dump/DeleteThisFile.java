@@ -78,7 +78,8 @@ class Expedia2{
     public static void main(String[] args) {
 //        System.out.println(getPalindSubstring("bbrrg"));
 //        System.out.println(getPalindSubstring("abc"));
-        System.out.println(scatterPalindrome("ddrrg").size());
+//        System.out.println(scatterPalindrome("ddrrg").size());
+        System.out.println((int)1e9);
     }
     private static ArrayList<String> scatterPalindrome1(String param){
         int n = param.length();

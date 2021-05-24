@@ -9,4 +9,12 @@ public class Index{
         this.x=x;
         this.y=y;
     }
+
+    @Override
+    public String toString() {
+        return "Index{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
