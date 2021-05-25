@@ -63,8 +63,12 @@ class Index{
 
  */
 public class Solution {
+    // maintaining set to handle words which are not present in the board.
     HashSet<String> set ;
 
+    /**
+     * our cute trie class.
+     */
     public class Trie {
         Trie[] childern;
         String word;
@@ -124,7 +128,7 @@ public class Solution {
     }
 
     public List<String> findWords(char[][] board, String[] words) {
-        set = new HashSet<>();
+        set = new HashSet<>(); // jo nahi milege, unke -1 -1 index dene hai hame
 
         List<String> result = new ArrayList<String>();
         Trie root = buildTrie(words);
@@ -144,7 +148,18 @@ public class Solution {
         return result;
     }
 
-    public void dfs(char[][] board, List<String> result, Trie root, int i , int j, Index starting, int cond) {
+    /**
+     * Backtracking function to check for words in the board from a particular location, you may find this puzzel at the back of your notebook.
+     *
+     * @param board , our character board
+     * @param result , result of found numbers along with their starting index.
+     * @param root , trie built over our words.
+     * @param i ,
+     * @param j , i j are current index of character
+     * @param starting , our actual staring of word
+     * @param direction , our direction for current word, we need our resulted word in straight line.
+     */
+    public void dfs(char[][] board, List<String> result, Trie root, int i , int j, Index starting, int direction) {
         char c = board[i][j];
 
         if (c == '*'|| root.childern[c - 'A'] == null)
@@ -161,29 +176,30 @@ public class Solution {
 
         board[i][j] = '*';
 
-        if (i > 0 && ( cond == 0 || cond == 1))
+        // check in all the directions but maintain the direction for further characters.
+        if (i > 0 && ( direction == 0 || direction == 1))
             dfs(board,result,root,i-1,j, starting, 1);
 
-        if (j > 0 && ( cond == 0 || cond == 2))
+        if (j > 0 && ( direction == 0 || direction == 2))
             dfs(board,result,root,i,j-1, starting, 2);
 
-        if (i < board.length - 1 && ( cond == 0 || cond == 3))
+        if (i < board.length - 1 && ( direction == 0 || direction == 3))
             dfs(board,result,root,i+1,j, starting, 3);
 
-        if (j < board[0].length - 1 && ( cond == 0 || cond == 4))
+        if (j < board[0].length - 1 && ( direction == 0 || direction == 4))
             dfs(board,result,root,i,j+1, starting,4);
 
 
-        if (i > 0 && j>0 && ( cond == 0 || cond == 5))
+        if (i > 0 && j>0 && ( direction == 0 || direction == 5))
             dfs(board,result,root,i-1,j-1, starting, 5);
 
-        if (i<board.length-1 && j > 0 && ( cond == 0 || cond == 6))
+        if (i<board.length-1 && j > 0 && ( direction == 0 || direction == 6))
             dfs(board,result,root,i+1,j-1, starting, 6);
 
-        if (i < board.length - 1 && j < board[0].length - 1 && ( cond == 0 || cond == 7))
+        if (i < board.length - 1 && j < board[0].length - 1 && ( direction == 0 || direction == 7))
             dfs(board,result,root,i+1,j+1, starting,7);
 
-        if (j < board[0].length - 1 && i>0 && ( cond == 0 || cond == 8))
+        if (j < board[0].length - 1 && i>0 && ( direction == 0 || direction == 8))
             dfs(board,result,root,i-1,j+1, starting,8);
 
         board[i][j] = c;
