@@ -36,43 +36,27 @@ package com.example.helloworld.array;
 public class MaximumAbsoluteSumOfAnySubArray {
 
     public int maxAbsoluteSum(int[] nums) {
-        int a = maxSubArray(nums);
-        int b = minSubArray(nums);
 
-        return Math.max( a, Math.abs(b) );
-    }
-
-    private int maxSubArray(int[] nums) {
         int maxSum = Integer.MIN_VALUE;
-        int temp=0;
-
-        for(int i=0; i<nums.length; ++i){
-            temp += nums[i];
-
-            if(temp > maxSum)
-                maxSum = temp;
-
-            if(temp < 0)
-                temp = 0;
-        }
-
-        return maxSum;
-    }
-
-    private int minSubArray(int[] nums) {
         int minSum = Integer.MAX_VALUE;
-        int temp=0;
+        int tmax=0, tmin=0;
 
         for(int i=0; i<nums.length; ++i){
-            temp += nums[i];
+            tmax += nums[i];
+            tmin += nums[i];
 
-            if(temp < minSum)
-                minSum = temp;
+            if(tmax < 0)
+                tmax = 0;
+            if(tmax > maxSum)
+                maxSum = tmax;
 
-            if(temp > 0)
-                temp = 0;
+            if(tmin > 0)
+                tmin = 0;
+            if(tmin < minSum)
+                minSum = tmin;
         }
 
-        return minSum;
+        return Math.max(maxSum, Math.abs(minSum));
     }
+
 }
