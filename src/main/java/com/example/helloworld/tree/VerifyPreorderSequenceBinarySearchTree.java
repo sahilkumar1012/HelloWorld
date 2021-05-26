@@ -44,3 +44,29 @@ public class VerifyPreorderSequenceBinarySearchTree {
 
     }
 }
+
+/**
+ * faster solution, 99% on leetcode. but couldn't understand.
+ */
+class Solution2 {
+    int idx=0;
+    public boolean verifyPreorder(int[] preorder) {
+        return helper(preorder,Integer.MAX_VALUE,Integer.MIN_VALUE);
+    }
+
+    private boolean helper(int[] preorder,int max,int min)
+    {
+        // add breaking condition
+        if(idx==preorder.length)
+            return true;
+
+        int root=preorder[idx];
+        if(root<min || root>max)
+            return false;
+
+        idx++;
+
+        return  helper(preorder,root,min) || helper(preorder,max,root);
+
+    }
+}
