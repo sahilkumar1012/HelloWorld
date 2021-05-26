@@ -35,6 +35,11 @@ package com.example.helloworld.array;
  */
 public class MaximumAbsoluteSumOfAnySubArray {
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
     public int maxAbsoluteSum(int[] nums) {
 
         int maxSum = Integer.MIN_VALUE;

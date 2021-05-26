@@ -148,4 +148,32 @@ class Expedia2{
         }
         return count<2;
     }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        int[] temp;
+        HashMap<String, List<Integer>> map = new HashMap<>();
+
+        String fstring;
+        int i=0;
+        for(String s: strs){
+            char[] ch = s.toCharArray();
+            Arrays.sort(ch);
+            s = ch.toString();
+
+            map.getOrDefault(s,new ArrayList<>()).add(i++);
+        }
+
+        List<List<String>> res = new ArrayList<>();
+        for(String s: map.keySet()){
+            List<Integer> idxs = map.get(s);
+            List<String> t = new ArrayList<>();
+
+            for(int ii : idxs){
+                t.add(strs[ii]);
+            }
+            res.add(t);
+        }
+
+        return res;
+    }
 }

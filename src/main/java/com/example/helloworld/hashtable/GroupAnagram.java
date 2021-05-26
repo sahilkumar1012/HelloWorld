@@ -1,64 +1,58 @@
 package com.example.helloworld.hashtable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
-class Key{
-    int[] freq;
-
-    public Key(int[] f){
-        freq = f;
-    }
-
-    @Override
-    public boolean equals(Object input){
-        Key key = (Key) input;
-        int[] a = key.freq;
-        for(int i=0; i<a.length; ++i){
-            if(a[i] != this.freq[i])
-                return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode(){
-        String str = "";
-        for(int i=0; i<freq.length; i++){
-            str += freq[i];
-        }
-        return str.hashCode();
-    }
-
-}
+/**
+ * leetcode 49. Group Anagrams
+ *
+ * Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+ *
+ * An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: strs = ["eat","tea","tan","ate","nat","bat"]
+ * Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+ * Example 2:
+ *
+ * Input: strs = [""]
+ * Output: [[""]]
+ * Example 3:
+ *
+ * Input: strs = ["a"]
+ * Output: [["a"]]
+ *
+ *
+ * Constraints:
+ *
+ * 1 <= strs.length <= 104
+ * 0 <= strs[i].length <= 100
+ * strs[i] consists of lower-case English letters.
+ */
 public class GroupAnagram {
 
     public static void main(String[] args) {
         System.out.println(new GroupAnagram().groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"}));
     }
-    public final char a = 'a';
 
     public List<List<String>> groupAnagrams(String[] strs) {
-        int[] temp;
-        HashMap<Key, List<String>> map = new HashMap<>();
+        HashMap<String,List<String>> hm= new HashMap<>();
 
         for(String s: strs){
-            temp = new int[26];
-            for(char ch : s.toCharArray()){
-                temp[ch-a]++;
+            char[] ch= s.toCharArray();
+
+            Arrays.sort(ch);
+            String temp=new String(ch);
+
+            if(!hm.containsKey(temp))
+            {
+                hm.put(temp,new ArrayList<String>());
             }
-            Key key = new Key(temp);
-            if(map.get(key)==null)
-                map.put(key, new ArrayList<>());
-            map.get(key).add(s);
+            hm.get(temp).add(s);
         }
 
-        List<List<String>> res = new ArrayList<>();
-        for(Key key : map.keySet()){
-            res.add(map.get(key));
-        }
-
-        return res;
+        return new ArrayList<>(hm.values());
     }
 }

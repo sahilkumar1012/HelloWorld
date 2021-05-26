@@ -1,4 +1,4 @@
-package com.example.helloworld.hashmap;
+package com.example.helloworld.hashtable;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
