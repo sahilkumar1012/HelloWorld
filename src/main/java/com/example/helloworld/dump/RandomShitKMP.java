@@ -1,19 +1,41 @@
-package com.example.helloworld.others;
+package com.example.helloworld.dump;
 
 
-public class RandomShit {
+public class RandomShitKMP {
     // KMP
     public static void main(String[] args) {
-        String string = "";
-        String pattern = "";
+        String string = "abcxabcdabcdabco";
+        String pattern = "abcdabcy";
 
         System.out.println(kmp(string.toCharArray(), pattern.toCharArray()));
     }
 
     private static boolean kmp(char[] string, char[] pattern) {
         int[] lps = lps(pattern);
-        System.out.println(lps);
-        return true;
+        //System.out.println(lps);
+
+
+        return magicFunction(lps,pattern,string);
+    }
+
+    private static boolean magicFunction(int[] lps, char[] pattern, char[] string) {
+
+        int j=0,i=0;
+        while(i<string.length && j<pattern.length)
+        {
+            if(pattern[j]==string[i]){
+                j++;
+                i++;
+            }
+            else{
+                if(j!=0)
+                j=lps[j-1];
+
+                else
+                    i++;
+            }
+        }
+        return j==pattern.length;
     }
 
     private static int[] lps(char[] pattern) {

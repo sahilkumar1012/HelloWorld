@@ -77,10 +77,7 @@ public class KMP {
                 }
             }
         }
-        if(j == pattern.length){
-            return true;
-        }
-        return false;
+        return j == pattern.length;
     }
 
     public static void main(String args[]){
