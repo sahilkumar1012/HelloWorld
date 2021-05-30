@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Date 10/31/2015
- * @author Tushar Roy
+ * @author sahil
  *
  * Z algorithm to pattern matching
  *
