@@ -3,6 +3,48 @@ package com.example.helloworld.dump;
 import java.util.*;
 
 
+
+class Solution {
+    public static void main(String[] args) {
+        new Solution().solve(new String("zzxxzzzyyxzyzxzzzxxxxxxxxxzyxzzzzzx"));
+    }
+    public int solve(String A) {
+        int[] arr= new int[26];
+
+        for(char c:A.toCharArray()){
+            arr[c-'a']++;
+        }
+
+        if(helper(arr,'H',A.length())) return 1;
+        return 0;
+    }
+    boolean helper(int[] arr,char pre,int len){
+        if(len==0)
+            return true;
+
+
+        for(int i=0;i<26;i++){
+            if('a'+i-1==(int)pre || 'a'+i+1==(int)pre)
+                continue;
+            if(arr[i]>0){
+                arr[i]--;
+                boolean temp=helper(arr,(char)('a'+i),len-1);
+                if(temp) return true;
+                arr[i]++;
+            }
+
+        }
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
 public class DeleteThisFile {
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
