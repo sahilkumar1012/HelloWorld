@@ -1,7 +1,7 @@
 /out/
 /.idea/
 .DS_Store
-/src/com/example/helloworld/dump/Dump.java
+Dump.java
 /target
 *.iml
-src/main/java/com/example/helloworld/dump/DeleteThisFile.java
+Delete*.java
