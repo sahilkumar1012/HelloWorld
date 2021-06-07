@@ -4,3 +4,4 @@
 /src/com/example/helloworld/dump/Dump.java
 /target
 *.iml
+src/main/java/com/example/helloworld/dump/DeleteThisFile.java
