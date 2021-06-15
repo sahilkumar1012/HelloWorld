@@ -37,7 +37,7 @@ import java.util.Arrays;
  * Could you come up with the O(n2) solution?
  * Could you improve it to O(n log(n)) time complexity?
  */
-public class LongestIncreasingSubsequence {
+public class LongestIncreasingSubsequenceLIS {
 
     /*
     https://youtu.be/22s1xxRvy28
@@ -63,14 +63,13 @@ public class LongestIncreasingSubsequence {
     }
 
 
-    // O(n^2) time with linear space.
+    // O(n^2) time with linear space. DP solution
     public int lengthOfLISOld(int[] nums) {
         final int n = nums.length;
         int dp[] = new int[n];
         int i,j,c;
 
-        for(i=0;i<n;i++) // initialize array with 1.
-            dp[i] = 1;
+        Arrays.fill(dp,1);
 
         // did linear dp in this case.
         for(i=1;i<n;i++){
