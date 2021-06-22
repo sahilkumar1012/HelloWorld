@@ -11,7 +11,7 @@ import java.util.Map;
  *  Time O(m)
  */
 
-public class DisjointSet {
+public class UnionFindByRankPathCompression {
     private Map<Long, Node> map = new HashMap<>();
 
     class Node {
@@ -81,7 +81,7 @@ public class DisjointSet {
     }
 
     public static void main(String args[]) {
-        DisjointSet ds = new DisjointSet();
+        UnionFindByRankPathCompression ds = new UnionFindByRankPathCompression();
         ds.makeSet(1);
         ds.makeSet(2);
         ds.makeSet(3);
