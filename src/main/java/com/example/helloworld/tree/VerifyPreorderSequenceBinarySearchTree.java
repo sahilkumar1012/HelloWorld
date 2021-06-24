@@ -56,8 +56,7 @@ class Solution2 {
 
     private boolean helper(int[] preorder,int max,int min)
     {
-        // add breaking condition
-        if(idx==preorder.length)
+          if(idx==preorder.length)
             return true;
 
         int root=preorder[idx];
