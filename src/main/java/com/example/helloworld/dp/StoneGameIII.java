@@ -53,6 +53,8 @@ import java.util.Arrays;
  * -1000 <= values[i] <= 1000
  */
 public class StoneGameIII {
+    /*
+
     int dp[] = new int[50001];
 
     int helper(int i, int[] v){
@@ -68,10 +70,11 @@ public class StoneGameIII {
 
         return dp[i] = ans;
     }
-    public String stoneGameIII(int[] stoneValue) {
+    public String stoneGameIIITopDownDP(int[] stoneValue) {
         Arrays.fill(dp,-1);
 
         int ans = helper(0,stoneValue); // calculating alice score - bob score, in case when alice is playing optimiaally..
+
 
         if(ans==0)
             return "Tie";
@@ -79,4 +82,54 @@ public class StoneGameIII {
             return "Alice";
         return "Bob";
     }
+
+    */
+
+    // bottom up dp.
+    public String stoneGameIIIOld(int[] v) {
+        int n = v.length;
+        int[] dp = new int[n+1];
+        int i = n-1;
+        int ans=0;        // ans will store score of alice - bob.
+        while(i >= 0){
+            ans = v[i] - dp[i+1];
+            if(i<n-1) ans = Math.max(ans, v[i] + v[i+1] - dp[i+2]);
+            if(i<n-2) ans = Math.max(ans, v[i]+v[i+1]+v[i+2] - dp[i+3]);
+            dp[i] = ans;
+            i--;
+        }
+        // ans = dp[0];         // no need
+        if(ans==0)
+            return "Tie";
+        if(ans > 0)
+            return "Alice";
+        return "Bob";
+    }
+
+    // bottom up dp. in constant space
+    public String stoneGameIII(int[] v) {
+        int n = v.length;
+        int i1=0, i2=0, i3=0;
+        int i = n-1;
+
+        int ans=0;        // ans will store score of alice - bob.
+        while(i >= 0){
+            ans = v[i] - i1;
+            if(i<n-1) ans = Math.max(ans, v[i] + v[i+1] - i2);
+            if(i<n-2) ans = Math.max(ans, v[i]+v[i+1]+v[i+2] - i3);
+
+            i3 = i2;
+            i2 = i1;
+            i1 = ans;
+            i--;
+
+        }
+        // ans = i1;         // no need
+        if(ans==0)
+            return "Tie";
+        if(ans > 0)
+            return "Alice";
+        return "Bob";
+    }
+
 }
