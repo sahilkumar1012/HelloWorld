@@ -41,6 +41,14 @@ import java.util.List;
  * 1 <= n <= 16
  */
 public class GrayCode {
+
+    /**
+     res mai 0 1 add kardie.. fir piche se iterate karke hum 1 se or kar dege 1 ko << karke j i times.
+     0 1
+     0 1 11 10
+     0 1 11 10 110 111 101 100
+     */
+
     public List<Integer> grayCode(int n) {
         ArrayList<Integer> res = new ArrayList<>();
         // Stack<Integer> s= new Stack<>();
@@ -55,4 +63,27 @@ public class GrayCode {
 
         return res;
     }
+    /*
+        public List<Integer> grayCode(int n) {
+        List<Integer> res = new ArrayList<>();
+        // Stack<Integer> s = new Stack<>();
+
+        res.add(0);
+        res.add(1);
+
+        for(int i=1; i<n; ++i){
+            for(int j=res.size()-1; j>=0; j--){
+                res.add( (res.get(j) | (1<<i)) );
+            }
+            // for(int j : res){
+            //     s.push( (j | (1<<i)) );
+            // }
+            // while(!s.isEmpty()){
+            //     res.add(s.pop());
+            // }
+        }
+
+        return res;
+    }
+     */
 }
