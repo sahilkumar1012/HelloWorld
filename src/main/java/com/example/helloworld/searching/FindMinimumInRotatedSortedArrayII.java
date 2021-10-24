@@ -1,5 +1,10 @@
 package com.example.helloworld.searching;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * leetcode 154. Find Minimum in Rotated Sorted Array II
  *
@@ -78,5 +83,52 @@ public class FindMinimumInRotatedSortedArrayII {
         FindMinimumInRotatedSortedArrayII obj = new FindMinimumInRotatedSortedArrayII();
         int[] arr = new int[]{3,3,1,3};
         System.out.println(obj.findMin(arr));
+    }
+}
+
+class FindMinimumInRotatedSortedArrayIIBucketingSolution {
+    public String frequencySort(String s) {
+        if (s == null) {
+            return null;
+        }
+        // capture frequency
+        Map<Character, Integer> map = new HashMap();
+        int max = 0;
+        for (Character c : s.toCharArray()) {
+            map.put(c, map.getOrDefault(c,0)+1);
+            max = Math.max(max, map.get(c));
+        }
+
+        List<Character>[] array = buildBucketArray(map, max);
+
+        return buildOutputString(array);
+    }
+
+    private List<Character>[] buildBucketArray(Map<Character, Integer> map, int maxCount) {
+        List<Character>[] array = new List[maxCount + 1];
+        for (Character c : map.keySet()) {
+            int count = map.get(c); // considering frequency count as index in our array.
+            if (array[count] == null) {
+                array[count] = new ArrayList();
+            }
+            array[count].add(c);
+        }
+        return array;
+    }
+
+    private String buildOutputString(List<Character>[] array) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = array.length - 1; i > 0; i--) {
+            var list = array[i];
+            if (list != null) {
+                for (Character c : list) {
+                    // jo index hai utni bar hi vo characters add ho jaege.
+                    for (int j = 0; j < i; j++) {
+                        sb.append(c);
+                    }
+                }
+            }
+        }
+        return sb.toString();
     }
 }
