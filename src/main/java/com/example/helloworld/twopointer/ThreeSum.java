@@ -38,17 +38,16 @@ public class ThreeSum {
 
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-
         if(nums.length < 3)
             return ans;
 
-        Arrays.sort(nums);
-        int n = nums.length;
+        Arrays.sort(nums);  // input must be sorted for two pointer approach
 
+        int n = nums.length;
         List<Integer> temp;
 
         for(int i=0; i<=n-3; ++i){
-            if(i>0 && nums[i-1]==nums[i])
+            if(i>0 && nums[i-1]==nums[i])       // to handle duplicate cases.
                 continue;
 
             int j=i+1, k=n-1;
@@ -63,20 +62,21 @@ public class ThreeSum {
                 }else if( tsum < target ){
                     j++;
                 }else{
+                    // capture this case
                     temp = new ArrayList<>();
                     temp.add(nums[i]);
                     temp.add(nums[j]);
                     temp.add(nums[k]);
                     ans.add(temp);
+
                     j++; k--;
 
+                    // to handle duplicate cases
                     while(j<k && nums[j]==nums[j-1]) j++;
-
                     while(k>j && nums[k]==nums[k+1]) k--;
                 }
             }
         }
-
         return ans;
     }
 }
