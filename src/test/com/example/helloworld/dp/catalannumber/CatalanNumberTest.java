@@ -1,6 +1,5 @@
 package com.example.helloworld.dp.catalannumber;
 
-import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
