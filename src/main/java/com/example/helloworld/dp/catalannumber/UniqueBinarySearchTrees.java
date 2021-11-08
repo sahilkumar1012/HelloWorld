@@ -26,6 +26,10 @@ package com.example.helloworld.dp.catalannumber;
  */
 public class UniqueBinarySearchTrees {
 
+    public static int uniqueBinarySearchTrees(int numberOfNodes){
+        return CatalanNumber.findNthCatalanNumber(numberOfNodes);
+    }
+
     public int numTrees(int n) { //n=4
         int[] t = new int[n+1];
         t[0] = 1;
