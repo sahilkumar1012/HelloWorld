@@ -1,8 +1,7 @@
-package com.example.helloworld.dp;
+package com.example.helloworld.dp.buyandsellstock;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BestTimetoBuyandSellStockwithTransactionFeeTest {
 
@@ -20,6 +19,6 @@ class BestTimetoBuyandSellStockwithTransactionFeeTest {
      */
     void maxProfit() {
         int[] prices = new int[]{1,3,2,8,4,9};
-        assertEquals(8, BestTimetoBuyandSellStockwithTransactionFee.maxProfit(prices, 2));
+        Assertions.assertEquals(8, BestTimetoBuyandSellStockwithTransactionFee.maxProfit(prices, 2));
     }
 }

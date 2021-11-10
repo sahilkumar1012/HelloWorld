@@ -1,4 +1,4 @@
-package com.example.helloworld.dp;
+package com.example.helloworld.dp.buyandsellstock;
 
 /**
  * leetcode : 309. Best Time to Buy and Sell Stock with Cooldown
@@ -35,6 +35,7 @@ public class BestTimeToBuyAndSellStockWithCooldown {
     public int maxProfit(int[] arr) {
         int n = arr.length;
 
+        // initializing buying, selling and cooled state initially.
         int obsp = -arr[0];
         int ossp = 0;
         int ocsp = 0;
