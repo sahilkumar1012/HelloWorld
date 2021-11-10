@@ -37,30 +37,31 @@ package com.example.helloworld.dp;
  * 0 <= prices[i] <= 104
  */
 public class BestTimeToBuyAndSellStockII {
-    public int maxProfit(int[] prices) {
+    public static int maxProfit(int[] prices) {
         int maxProfit =0;
 
-        // sabhi jumps capture kar liye..
-        // for(int i=1; i<prices.length; ++i){
-        //     if(prices[i] > prices[i-1]){
-        //         maxProfit += prices[i] - prices[i-1];
-        //     }
-        // }
-        // return maxProfit;
-
-        int bd = 0, sd = 0;
-        int profit = 0;
-
+        // capturing all the hikes as we only need profit here.
         for(int i=1; i<prices.length; ++i){
-            if(prices[i] >= prices[i-1]){
-                sd++;
-            }else{
-                profit += prices[sd] - prices[bd];
-                bd = sd = i;
+            if(prices[i] > prices[i-1]){
+                maxProfit += prices[i] - prices[i-1];
             }
         }
+        return maxProfit;
 
-        profit += prices[sd] - prices[bd];
-        return profit;
+        // capturing with buying and selling day with minimum transactions, useful if we need to minimise transaction.
+//         int bd = 0, sd = 0; // buying and selling day
+//         int profit = 0;
+
+//         for(int i=1; i<prices.length; ++i){
+//             if(prices[i] >= prices[i-1]){
+//                 sd++;
+//             }else{
+//                 profit += prices[sd] - prices[bd];
+//                 bd = sd = i;
+//             }
+//         }
+
+//         profit += prices[sd] - prices[bd];
+//         return profit;
     }
 }
