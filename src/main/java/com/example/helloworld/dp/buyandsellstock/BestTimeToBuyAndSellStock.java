@@ -43,8 +43,11 @@ public class BestTimeToBuyAndSellStock {
         for (int i = 0; i < prices.length; ++i) {
             if (prices[i] < minprice)
                 minprice = prices[i];
-            if (prices[i] - minprice > maxprofit)
-                maxprofit = prices[i] - minprice;
+
+            int profitIfSoldToday = prices[i] - minprice;
+
+            if (profitIfSoldToday > maxprofit)
+                maxprofit = profitIfSoldToday;
         }
         return maxprofit;
     }
