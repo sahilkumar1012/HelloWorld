@@ -45,17 +45,17 @@ public class LongestIncreasingSubsequenceLIS {
     */
 
     // O(nlog(n)) time with linear space.
-    public int lengthOfLIS(int[] nums) {
+    public int lengthOfLISd(int[] nums) {
         int n = nums.length,numPiles=0;
         int piles[] = new int[n];
 
         for(int num: nums){
-            int destPile = Arrays.binarySearch(piles,0,numPiles,num);
+            int destPile = Arrays.binarySearch(piles,0,numPiles,num); // bs : [startIndex, endIndex)
             if(destPile<0){
                 destPile = -(destPile+1); // as binar search return -(insertPoint)-1
             }
             piles[destPile] = num;
-            if(destPile == numPiles){
+            if(destPile == numPiles){       // new pile was created.
                 numPiles++;
             }
         }
@@ -63,30 +63,26 @@ public class LongestIncreasingSubsequenceLIS {
     }
 
 
-    // O(n^2) time with linear space. DP solution
-    public int lengthOfLISOld(int[] nums) {
+    // O(n^2) time with linear space.
+    public int lengthOfLISdp(int[] nums) {
         final int n = nums.length;
         int dp[] = new int[n];
-        int i,j,c;
+        int omax = 0;
 
-        Arrays.fill(dp,1);
-
-        // did linear dp in this case.
-        for(i=1;i<n;i++){
-            c = 0;
-            for(j=i-1;j>=0;j--){
+        for(int i=0;i<n;i++){
+            int max = 0;        // max dp value so far.
+            for(int j=i-1;j>=0;j--){
                 if(nums[j]<nums[i]){
-                    c = Math.max(c,dp[j]);
+                    if(max < dp[j])
+                        max = dp[j];
                 }
             }
-            dp[i] += c;
+            dp[i] = max + 1;
+
+            if(omax < dp[i])
+                omax = dp[i];
         }
-
-        int max = Integer.MIN_VALUE;
-        for(i=0;i<n;i++)
-            max = Math.max(max,dp[i]);
-
-        return max;
+        return omax;
     }
 
     /*
