@@ -1,5 +1,8 @@
 package com.example.helloworld.tree.model;
 
+import lombok.Data;
+
+@Data
 public class TreeNode {
     public int val;
     public TreeNode left;
