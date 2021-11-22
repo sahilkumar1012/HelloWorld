@@ -4,5 +4,4 @@
 Dump.java
 /target
 *.iml
-Delete*.java
 src/main/java/com/example/helloworld/dump/DeleteThisFile.java
