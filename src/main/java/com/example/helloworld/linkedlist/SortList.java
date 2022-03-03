@@ -59,4 +59,35 @@ public class SortList {
         }
         return slow;
     }
+
+
+    /**
+     * using insertion sort. TLE
+      */
+
+    public ListNode sortListInsertionSort(ListNode head) {
+        if(head == null || head.next == null) return head;
+
+        ListNode resHead = new ListNode(Integer.MIN_VALUE);
+
+        while(head != null){
+            ListNode temp = head;
+            head = head.next;
+
+            // insert this temp at it's appropriate location in resultant list
+            ListNode it = resHead;
+            while(it.next != null && it.next.val < temp.val){
+                it = it.next;
+            }
+            if(it.next == null){
+                it.next = temp;
+                temp.next = null;
+            }else{
+                temp.next = it.next;
+                it.next = temp;
+            }
+        }
+
+        return resHead.next;
+    }
 }
