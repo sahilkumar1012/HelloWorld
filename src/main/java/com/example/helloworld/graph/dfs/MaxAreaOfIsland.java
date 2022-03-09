@@ -31,40 +31,33 @@ package com.example.helloworld.graph.dfs;
  * grid[i][j] is either 0 or 1
  */
 public class MaxAreaOfIsland {
-    int m;
-    int n;
-    int res;
-    int[][] grid;
+    int ans = 0, m , n;
 
-    public int maxAreaOfIsland(int[][] matrix) {
-        grid = matrix;
-        res = 0;
+    public int maxAreaOfIsland(int[][] grid) {
         m = grid.length;
         n = grid[0].length;
 
-        for(int i=0; i<m; ++i){
-            for(int j=0; j<n; ++j){
-                if( grid[i][j] == 1 ){
-                    res = Math.max(res, sol(i, j) );
-                }
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(grid[i][j] == 1)
+                    ans = Math.max(ans, dfs(grid, i, j));
             }
         }
-
-        return res; //maximum area of island
+        return ans;
     }
 
-    private int sol(int i, int j){
-        if(i>=m || j>=n || i<0 || j<0 || grid[i][j]==0)     // negative case.
+    private int dfs(int[][] grid, int i, int j){
+        if(i<0 || j<0 || i>=m || j>=n || grid[i][j] == 0)
             return 0;
+        int area = 1;   // of current node
 
-        int a = 1;  // area of specific island
-        grid[i][j] = 0;   // sink it
+        grid[i][j] = 0;
 
-        a += sol(i+1,j);
-        a += sol(i-1,j);
-        a += sol(i,j+1);
-        a += sol(i,j-1);
+        int[] row = {1,0,-1,0};     // go in all 4 directions
+        int[] col = {0,1,0,-1};
+        for(int ii=0; ii<4; ii++)
+            area += dfs(grid, i+row[ii], j+col[ii]);
 
-        return a;
+        return area;
     }
 }
