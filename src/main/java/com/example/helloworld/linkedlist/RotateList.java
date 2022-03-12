@@ -30,7 +30,7 @@ import com.example.helloworld.linkedlist.model.ListNode;
 public class RotateList {
     public ListNode rotateRight(ListNode head, int k) {
         if(k==0) return head;
-        int n = len(head);
+        int n = lengthOfLinkedList(head);
 
         if(n==0 || k%n == 0) return head;
 
@@ -52,7 +52,12 @@ public class RotateList {
         return newHead;
     }
 
-    private int len(ListNode head){
+    /**
+     * function to find the length of a linked list, size of a linked list, length of linked list
+     * @param head
+     * @return
+     */
+    public int lengthOfLinkedList(ListNode head){
         int len = 0 ;
         while(head != null){
             len++;
