@@ -40,31 +40,31 @@ import java.util.Stack;
  * s[i] is either'(' , ')', or lowercase English letter.
  */
 public class MinimumRemoveToMakeValidParentheses {
-        public String minRemoveToMakeValid(String s) {
-            Stack<int[]> stack = new Stack<>();
+    public String minRemoveToMakeValid(String s) {
+        Stack<int[]> stack = new Stack<>();
 
-            for(int i=0; i<s.length(); i++){
-                char ch = s.charAt(i);
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
 
-                if(ch == '('){
-                    stack.push(new int[]{(int)'(', i});
-                }else if(ch == ')'){
-                    if(!stack.isEmpty() && stack.peek()[0] == (int)'(')
-                        stack.pop();
-                    else
-                        stack.push(new int[]{(int)')', i});
-                }
+            if(ch == '('){
+                stack.push(new int[]{(int)'(', i});
+            }else if(ch == ')'){
+                if(!stack.isEmpty() && stack.peek()[0] == (int)'(')
+                    stack.pop();
+                else
+                    stack.push(new int[]{(int)')', i});
             }
-            // stack is having all the invalid bracket with their indices
-            Set<Integer> set = new HashSet<>();     // invalid index set
-            while(!stack.isEmpty()){
-                set.add(stack.pop()[1]);
-            }
-
-            StringBuilder ans = new StringBuilder();
-            for(int i=0; i<s.length(); i++)
-                if(!set.contains(i)) ans.append(s.charAt(i));
-
-            return ans.toString();
         }
+        // stack is having all the invalid bracket with their indices
+        Set<Integer> set = new HashSet<>();     // invalid index set
+        while(!stack.isEmpty()){
+            set.add(stack.pop()[1]);
+        }
+
+        StringBuilder ans = new StringBuilder();
+        for(int i=0; i<s.length(); i++)
+            if(!set.contains(i)) ans.append(s.charAt(i));
+
+        return ans.toString();
     }
+}
