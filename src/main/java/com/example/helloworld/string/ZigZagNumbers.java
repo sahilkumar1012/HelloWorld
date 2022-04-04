@@ -1,4 +1,4 @@
-package com.example.helloworld.string.easy;
+package com.example.helloworld.string;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class ZigZagNumbers {
 
         for (char c : s.toCharArray()) {
             rows.get(curRow).append(c);     // maintaining direction
-            if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;
+            if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;           // if at edge, change direction
             curRow += goingDown ? 1 : -1;               // extreme points are only considered once.
         }
 

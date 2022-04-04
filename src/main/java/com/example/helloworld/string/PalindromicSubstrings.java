@@ -80,11 +80,11 @@ public class PalindromicSubstrings {
         int n = s.length();
         boolean[][] dp=new boolean[n][n];
         int count=0;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n;i++){       // check elements for len = 1 , which are always palindrome
             dp[i][i]=true;
             count++;
         }
-        for(int i=1;i<n;i++)
+        for(int i=1;i<n;i++)            // check for substrings of len = 2
         {
             if(s.charAt(i)==s.charAt(i-1)){
                 dp[i-1][i]=true;
@@ -104,8 +104,6 @@ public class PalindromicSubstrings {
             }
 
         }
-
-
         return count;
     }
 }
