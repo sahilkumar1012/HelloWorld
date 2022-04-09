@@ -48,17 +48,17 @@ public class MinimumNumberofTapstoOpentoWateraGarden {
                 open = 0,
                 idx = 0;
 
-        while(max < n){
+        while (max < n) {
 
-            for(int i=idx; i < ranges.length; i++){
-                if( (i-ranges[i]) <= min && (i+ranges[i]) > max){
-                    max = i+ranges[i];
+            for (int i = idx; i < ranges.length; i++) {
+                if ((i - ranges[i]) <= min && (i + ranges[i]) > max) {
+                    max = i + ranges[i];
                     idx = i;
                 }
             }
 
-            if(min == max) return -1;   // cannot proceed further in garden
-            open ++;
+            if (min == max) return -1;   // cannot proceed further in garden
+            open++;
             min = max;
         }
 
