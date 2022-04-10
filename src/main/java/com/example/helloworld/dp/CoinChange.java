@@ -67,6 +67,39 @@ public class CoinChange {
 
         return dp[amt]; // result of all the subproblems.
     }
+
+
+    /**
+     * reference video link : https://youtu.be/ZI17bgz07EE
+     */
+    public int coinChange2dDp(int[] coins, int amount) {
+        int n = coins.length;
+        int[][] dp = new int[n+1][amount+1];
+
+        for(int i=0; i<=n; i++){
+            for(int j=0; j<=amount; j++){
+                if( i==0 && j==0 ){
+                    dp[i][j] = 0;
+                }else if( i == 0){
+                    dp[i][j] = 10001;
+                }else if( j == 0){
+                    dp[i][j] = 0;
+                }else{
+                    int exclude = dp[i-1][j];
+
+                    int val = coins[i-1];
+                    if(val <= j){
+                        int include = 1 + dp[i][j - coins[i-1]];
+                        dp[i][j] = Math.min(include, exclude);
+                    }else{
+                        dp[i][j] = exclude;
+                    }
+                }
+            }
+        }
+
+        return dp[n][amount] > 10000 ? -1 : dp[n][amount];
+    }
 }
 
 
