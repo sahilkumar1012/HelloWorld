@@ -36,7 +36,7 @@ public class GraphValidTree {
 
     class UnionFind{
         int[] father;
-        int n;
+        int n;              // n-1 edges are required to make this graph fully connected with no loops.
 
         public UnionFind(int n){
             this.n = n-1;       // to make it a single connected graph with no loops
