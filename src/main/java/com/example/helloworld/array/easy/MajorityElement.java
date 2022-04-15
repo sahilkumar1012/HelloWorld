@@ -31,7 +31,7 @@ package com.example.helloworld.array.easy;
 public class MajorityElement {
 
     /**
-     * did using moore voting algorithm
+     * did using moore voting algorithm, Using Moore’s Voting Algorithm
      */
     public int majorityElement(int[] nums) {
         int cand = findCandidate(nums);
