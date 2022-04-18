@@ -40,7 +40,7 @@ public class BinarySearchTreeFromPreorder {
         return helper(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    // binary search tree helper constructing bst from it's preorder traversal value.
+    // binary search tree helper constructing bst from its preorder traversal value.
     private TreeNode helper(int[] preorder, int lowerBound, int upperBound) {
         if(index == preorder.length || preorder[index]<lowerBound || preorder[index]>upperBound)
             return null;
