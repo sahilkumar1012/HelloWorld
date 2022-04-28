@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 
 /**
- * leetcode 210. Course Schedule II
+ * leetcode 210. Course Schedule II | topological sort standard problem
  *
  * There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
  *
@@ -45,7 +45,7 @@ public class CourseScheduleII {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         int n = numCourses;
 
-        // prepare adj list
+        // prepare the adjacency list
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
         for(int i=0; i<numCourses; i++){
             adj.add(new ArrayList<>());
@@ -66,12 +66,14 @@ public class CourseScheduleII {
                 topo(i, adj, visited, stack);
             }
         }
+
         int[] ans = new int[stack.size()];
         for(int i=ans.length-1; i>=0; i--){
             ans [i] = stack.pop();
         }
         return ans;
     }
+
     private void topo(int s, ArrayList<ArrayList<Integer>> adj, boolean[] visited, Deque<Integer> stack){
         visited[s] = true;
         for(int i : adj.get(s) ){
@@ -101,7 +103,7 @@ public class CourseScheduleII {
 
         return false;   // no cycle present in this directed graph.
     }
-
+             // logic to detect cycle in directed graph
     private boolean cycle(int s, boolean[] visited, boolean[] currVisited, ArrayList<ArrayList<Integer>> adj){
         visited[s] = true;
         currVisited[s] = true;
