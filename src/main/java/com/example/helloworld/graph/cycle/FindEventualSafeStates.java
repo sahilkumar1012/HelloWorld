@@ -1,4 +1,4 @@
-package com.example.helloworld.graph;
+package com.example.helloworld.graph.cycle;
 
 import java.util.ArrayList;
 import java.util.List;
