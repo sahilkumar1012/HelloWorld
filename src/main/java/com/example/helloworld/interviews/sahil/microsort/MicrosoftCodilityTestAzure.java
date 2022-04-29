@@ -123,9 +123,47 @@ class Problem1 {
  * · each element of matrix A is an integer within the range [0..1];
  *
  * · there is at least one house.
+ *
+ * [0, 0, 0, 0],
+ * [0, 0, 1, 0],
+ * [1, 0, 0, 1]
  */
 class Problem2{
 
+    /**
+     * solution description :
+     * Description
+     * Consider a 5 x 5 grid where house is located at (2,2). Allowable distance k = 2.
+     * 0 0 0 0 0
+     * 0 0 0 0 0
+     * 0 0 1 0 0
+     * 0 0 0 0 0
+     * 0 0 0 0 0
+     *
+     * We notice the valid spots on which we can build a store are as follows
+     *
+     * 0 0 x 0 0
+     * 0 x 0 x 0
+     * x 0 1 0 x
+     * 0 x 0 x 0
+     * 0 0 x 0 0
+     *
+     * Coordinates along ( diagonals are mentioned in the above grid with x as boundary )
+     * -- northwest diagonal: (0,2), (1,1), (2,0) -> all add up to 2; x + y = 2
+     * -- southeast diagonal: (2,4), (3,3), (4,2) -> all add up to 6; x + y = 6
+     * -- northeast diagonal: (0,2), (1,3), (2,4) -> x - y = -2 for all; x - y = -2
+     * -- southwest diagonal: (2,0), (3,1), (4,2) -> x - y = 2 for all; x - y = 2
+     *
+     * Therefore, for a given store located at (a, b), house located at (x,y) is within k distance from store if its coordinates meets the following conditions
+     *
+     * a + b - k <= x + y <= a + b + k
+     * a - b - k <= x - y <= a - b + k
+     * For each of the houses, we can determine these 4 local diagonals by calculating both bounds for x + y and x - y, then record the max/min bounds for all the houses to get the 4 global (diagonal) bounds
+     * Subsequently, we can check all empty 'plots' and add them to the final result count if they fall within the range
+     * @param K
+     * @param A
+     * @return
+     */
     public int solution(int K, int[][] A) {
         int m = A.length, n = A[0].length, k = K;
 
@@ -145,15 +183,15 @@ class Problem2{
         int southwest = Integer.MIN_VALUE;
         int northeast = Integer.MAX_VALUE;
 
-        for (String ele : houses) {
-            String arr[] = ele.split("&");
-            int a = Integer.valueOf(arr[0]);
-            int b = Integer.valueOf(arr[1]);
-            northwest = Math.max(northwest, a - b - k);
-            southeast = Math.min(southeast, a - b + k);
+        for (String house : houses) {
+            String arr[] = house.split("&");
+            int x = Integer.valueOf(arr[0]);
+            int y = Integer.valueOf(arr[1]);
+            northwest = Math.max(northwest, x - y - k);
+            southeast = Math.min(southeast, x - y + k);
 
-            southwest = Math.max(southwest, a + b - k);
-            northeast = Math.min(northeast, a + b + k);
+            southwest = Math.max(southwest, x + y - k);
+            northeast = Math.min(northeast, x + y + k);
         }
         int ans = 0;
         for (int x = 0; x < m; x++)
