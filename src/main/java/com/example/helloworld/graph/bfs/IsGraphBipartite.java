@@ -61,8 +61,8 @@ public class IsGraphBipartite {
     }
     // bfs approach
     private boolean isBipartite(int[][] graph, int src, int[] visited){
-        Queue<int[]> q = new LinkedList<>();
-        q.offer(new int[]{src, 0});        // src, dest, level
+        Queue<int[]> q = new LinkedList<>();            // vertex and level
+        q.offer(new int[]{src, 0});
 
         while(! q.isEmpty() ){
             int[] rem = q.poll();

@@ -39,7 +39,7 @@ import java.util.Set;
  */
 public class MinCosttoConnectAllPoints {
 
-    // Minimum spanning tree logic
+    // Minimum spanning tree logic | Prim's algorithm
     public int minCostConnectPoints(int[][] points) {
 //        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> { return a[2] - b[2]; });
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
@@ -58,7 +58,7 @@ public class MinCosttoConnectAllPoints {
             cost += currCost;
             visited.add(currId);
 
-            for(int i=0; i<n; i++){
+            for(int i=0; i<n; i++){             // either iterate all the points, or just create adj list in the starting using these
                 if(!visited.contains(i)){
                     pq.offer(new int[]{ currId, i, distance(points, currId, i)} );
                 }
