@@ -31,3 +31,5 @@ Sample Output
 
 
 Solution : ek side ke bank ke base pe sort karlo and 2nd wale ke LIS length return karlo.
+
+Solution reference video : https://youtu.be/o1h3aoeSTOU

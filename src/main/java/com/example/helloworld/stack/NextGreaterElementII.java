@@ -46,7 +46,7 @@ public class NextGreaterElementII {
 
             int idx = i;
             for(int j=0; j<n-1; j++){
-                idx = (idx+1)%n;
+                idx = (idx + 1) % n;
                 if(nums[idx] > nums[i]){
                     ng = nums[idx];
                     break;
@@ -72,15 +72,14 @@ public class NextGreaterElementII {
         Stack<Integer> s = new Stack<>();       // to store the indices of elements
 
         // iterate from 2n-1, as we can move circularly.
-        for(int idx=2*n-1; idx>=0; --idx){
+        for (int idx = 2 * n - 1; idx >= 0; --idx) {
             int i = idx % n;
 
-            // remove all the previous elements indices which are smaller than current, they're not gonna add any value furtehr.
-            while(!s.isEmpty() && nums[s.peek()] <= nums[i])
+            // remove all the previous elements indices which are smaller and equal than current, they're not going to add any value further.
+            while (!s.isEmpty() && nums[s.peek()] <= nums[i])
                 s.pop();
 
-            res[i] = s.isEmpty() ? -1 :  nums[s.peek()];
-
+            res[i] = s.isEmpty() ? -1 : nums[s.peek()];
             s.push(i);
         }
 

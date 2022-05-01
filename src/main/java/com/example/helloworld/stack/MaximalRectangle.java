@@ -1,6 +1,7 @@
 package com.example.helloworld.stack;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * leetcode 85. Maximal Rectangle
@@ -82,39 +83,32 @@ first i made every row independent, checking usse upr kitne 1 hai jo consider ho
     }
 
     // largest rectange area in historgram wala logic.
-    private int largestRectangleArea(int[] heights) {
-        Stack<Integer> s = new Stack<>();
-        int maxArea = 0, area=0,i;
+    public int largestRectangleArea(int[] heights) {
+        Deque<Integer> s = new ArrayDeque<>(); // stack for indices
+        int maxArea = -1, area = 0, i=0;
 
-        for(i=0;i<heights.length;){
-            if(s.isEmpty() || heights[s.peek()]<=heights[i] ){
+        while( i < heights.length ){
+            if(s.isEmpty() || heights[s.peek()] <= heights[i]){
                 s.push(i++);
             }else{
-
                 int top = s.pop();
                 if(s.isEmpty()){
                     area = heights[top] * i;
                 }else{
-                    area = heights[top] * (i-s.peek()-1);
+                    area = heights[top] * (i - s.peek() -1);
                 }
-
-                if(area>maxArea)
-                    maxArea = area;
-
+                maxArea = Math.max(area, maxArea);
             }
         }
 
         while(!s.isEmpty()){
-
             int top = s.pop();
             if(s.isEmpty()){
                 area = heights[top] * i;
             }else{
-                area = heights[top] * (i-s.peek()-1);
+                area = heights[top] * (i - s.peek() -1);
             }
-
-            if(area>maxArea)
-                maxArea = area;
+            maxArea = Math.max(area, maxArea);
         }
 
         return maxArea;
