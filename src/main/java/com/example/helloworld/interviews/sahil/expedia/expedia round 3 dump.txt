@@ -1,0 +1,74 @@
+
+
+Class Solution{
+
+Public static void main(String[] args){
+
+}
+
+	public void sortPersons(List<Person> person ){
+		Collections.sort(person, (a,b)->{
+				return a.age - b.age;
+			});
+	}
+}
+
+
+// 5,9,11,23,54,64,1,2,3
+//54,64,1,2,3,5,9,11,23
+
+
+// a[0] < a[I]
+
+Class Solution{
+	Public int search (int[] nums, int target){
+		int l = 0, r = nums.length -1;		// l = 0, r = 8
+		while( l < r ){						// l = 3, r = 4
+			int mid = l + (r-l)/2;				// 3
+
+			if(target == nums[mid]) 	return mid;		// 2, item = 11
+
+			if( nums[l] <= nums[mid] ){			// this portion is sorted, if it’s true
+				if( target >= nums[l] && target < nums[mid]){
+					r = mid;
+				}else{
+					l = mid +1;
+				}
+			}else{
+				if ( target > nums[mid] && target <= nums[r]){
+					l = mid + 1;
+				}else{
+					r = mid;
+				}
+
+			}
+		}
+		if( nums[l] == target) 	return l;
+		return -1;
+	}
+}
+
+#### Directed graph problem :
+
+Hall, n persons
+Celebrity I :
+All element (n-1 ) know this I
+And doesn’t know any of the other n-1
+
+isKnown(a,b) -> true is a knows b
+false if a does not know b
+
+Set<Integer> notCele; // a, b,
+
+A,b > true
+B, c > true
+
+A,b
+// n2 loop check for all the combinations if(a is not in set)
+	// If they are connected , add a to noncelebrity set
+
+for(int I=0; I<n; I++){
+	for(int j=0; j<n; j++){
+		if(
+
+

@@ -76,7 +76,7 @@ public class QuickSort {
         int i = low-1;
 
         // average time is improved too much if we choose random pivot every time
-        // checked practically on leetcode .
+        // checked practically on leetcode.
         Random random = new Random();
         int t = random.nextInt(high-low+1);
         ArrayUtil.swap(arr, low + t, high);
