@@ -77,7 +77,7 @@ class MicrosoftCodilityTestProblem2 {
             res.add(new Integer[]{start, end});
         }
 
-        // convert res list to 2d array and return.
+        // No need for this section as we only need the size | convert res list to 2d array and return.
         int[][] ans = new int[res.size()][2];
         for (i = 0; i < res.size(); ++i) {
             ans[i][0] = res.get(i)[0];

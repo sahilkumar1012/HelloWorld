@@ -76,7 +76,7 @@ public class SmallestStringWithSwaps {
     }
 
     /**
-     * Standard UnionFind data structure template, use it in your program | union find data structure
+     * Standard UnionFind data structure template, use it in your program | union find data structure, disjoint set
      */
     class UnionFind {
         int[] parent;
