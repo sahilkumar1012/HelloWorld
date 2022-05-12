@@ -76,7 +76,9 @@ public class SmallestStringWithSwaps {
     }
 
     /**
-     * Standard UnionFind data structure template, use it in your program | union find data structure, disjoint set
+     * @author sahil
+     * Disjiont set / Union find / detect cycle in undirected graph.
+     * Standard UnionFind data structure template, use it in your program | union find data structure, disjoint set by sahil
      */
     class UnionFind {
         int[] parent;
