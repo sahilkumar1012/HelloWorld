@@ -6,6 +6,8 @@ import java.util.List;
 /**
  * Generating all the permutations of a given String.
  * took reference from tushar roy's video.
+ *
+ * asked in Adobe
  */
 public class StringPermutations {
     private final char firstChar = 'A'; // whether string is small case of capital case.

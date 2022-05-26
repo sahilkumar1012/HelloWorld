@@ -1,0 +1,126 @@
+package com.example.helloworld.interviews.sahil.arcesium;
+
+public class ArcesiumRound1 {
+}
+/*
+
+
+5 and 4 : 3
+5 and 6 : 5
+
+5 and 1 :
+
+
+
+5 null;
+   */
+
+class TreeNode{
+    int val;
+    TreeNode left, right;
+    public TreeNode(int val){
+        this.val = val;
+    }
+}
+
+/*
+ 				3
+		5				10
+	2 	6		4   9
+1		0
+*/
+class Solution{
+    // linear time( single iteration ) : O(n)
+    // space : only recursive stack
+
+    public static int findLCA(TreeNode root, int a, int b){
+        if(root == null) return null;
+
+        if(root.val == a || root.val == b)
+            return root;
+
+        TreeNode leftResult = findLCA(root.left, a, b);	// 5
+        TreeNode rightResult = findLCA(root.right, a, b);	// null
+
+        if(leftResult != null && rightResult != null) return root;
+        return leftResult != null ? leftResult : rightResult;
+    }
+
+}
+
+
+
+
+
+//2.
+
+class Sample{
+    private static Sample obj;
+    private Sample(){}
+
+    public static getInstance(){
+        if(obj == null){
+            synchronized(Sample.class){
+                if(obj == null)
+                    obj = new Sample();
+            }
+        }
+
+        return obj;
+    }
+}
+class Solution{
+    Sample obj = Sample.getInstance();
+}
+
+3.
+        API CALL - 15 mins
+        LB - 10 mins
+
+
+        async calL : create his job  > job in process as response 2xx ( user will be given a url where he has to poll for the response from this api. <URL> )
+        > operation will be performed on the backend .
+        > poll that url
+
+
+        requestid : request123
+< uuid , request, response >
+
+
+in response to create job : uuid
+
+
+
+        4. design a in memory hashmap
+
+
+        int hash[32];
+
+        hash( key )   > index in the table
+
+        key % 32  > idex.
+
+class Entry{
+    int key;
+    int val;
+}
+class HashMap{
+    List<Integer>[] hash;
+
+  public HashMap<>(){
+        // 36 lists
+    }
+
+    public add(int key, int val){
+        int idx = key % 32;
+        hash[idx].add(val);
+    }
+
+    public get(int key){
+        int idx = key % 32;
+
+    }
+    public remove(int key){
+
+    }
+}
