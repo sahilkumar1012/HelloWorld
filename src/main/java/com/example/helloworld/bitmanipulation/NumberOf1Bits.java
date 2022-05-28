@@ -42,14 +42,16 @@ public class NumberOf1Bits {
     public int hammingWeight(int n) {
         // return Integer.bitCount(n);
         System.out.println("given input: " + Integer.toBinaryString(n));
-        int sum = 0;
+        int count = 0;
         while (n != 0) {               // n!=0 hi chalegi yahan pe
-            n &= (n - 1);
-            sum++;
+//            n &= (n - 1);
 
+            int lsbm = n & (-n);
+            n = n - lsbm;
+            count++;
             System.out.println(" -> " + Integer.toBinaryString(n));
         }
-        return sum;
+        return count;
     }
 
     public static void main(String[] args) {
