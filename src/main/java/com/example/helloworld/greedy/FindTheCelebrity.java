@@ -51,7 +51,7 @@ public class FindTheCelebrity extends Relation {
         // }
         int cc = 0; // candidate celebrity
         for(int i=0; i<n; i++){
-            if(knows(cc, i))
+            if(knows(cc, i))                // means cc can not be our celebrity
                 cc = i;         // pruning
         }
         if(isCelebrity(cc, n))
