@@ -5,6 +5,7 @@ package com.example.helloworld.interviews.chirag.microsoft;
  *
  */
 public class CodilityMicrosoftChirag {
+    // below are the three problems
 }
 
 /**
