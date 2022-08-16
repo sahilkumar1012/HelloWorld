@@ -1,0 +1,131 @@
+Problem: 
+  For given numbers {54, 546, 548, 60}, the arrangement 6054854654 gives the largest value. 
+  And if the given numbers are {1, 34, 3, 98, 9, 76, 45, 4}, 
+  then the arrangement 998764543431 gives the largest value.
+
+
+ arr = {54, 546};
+
+Collections.sort(arr, (int a, int b) -> {               // 54 , 546
+    String s1 = String.valueOf(a) + String.valueOf(b);      // 54546
+    String s2 = String.valueOf(b) + String.valueOf(a);      // 54654
+    return s2.compareTo(s1);            // +ve, 
+});
+
+
+class Solution{
+    // time O(nlogn) space O(n) to store ans.
+    public String largestValue(int[] arr){
+        // array sort.
+        Arrays.sort(arr, (int a, int b) -> {               // 54 , 546
+            String s1 = String.valueOf(a) + String.valueOf(b);      // 54546
+            String s2 = String.valueOf(b) + String.valueOf(a);      // 54654
+            return s2.compareTo(s1);            // +ve, 
+        });
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i : arr){
+            sb.append(i);
+        }
+        return sb.toString();
+    }
+}
+
+
+
+
+
+Problem 2
+
+Amazon wants to send recommendations regarding products, but we want to do it in pairs. 
+Products fall into different categories and we don't want to recommend a pair of products that come from 
+the same category. There are N products and we don't know exactly how many categories there are and which 
+product belongs to which category. We are, however, aware that certain pairs of products belong in the same category.
+
+So, we are given a list of such product (ID) pairs that identify products belonging to a same category, 
+   for example: (1, 5), (7, 2), (3, 4), (4, 8), (6, 3), (5, 2). 
+When we analyze that list, we can see that we only have two categories with 4 products, 
+
+each: (1, 2, 5, 7), (3, 4, 6, 8)
+
+(1, 5), (7, 2), (3, 4), (4, 8), (6, 3), (5, 2). 
+
+public Map<Integer, List<Integer>> adj;
+
+keys : 
+
+performing dfs using keys(nodes). keeping track of the visited nodes.
+
+
+after first dfs call : 
+
+
+1 > 5
+5 > 1,2
+7 > 2
+2 > 7,5
+3 > 4,6
+4 > 3,8
+8 > 4
+6 > 3
+
+class Solution{
+    Set<Integer> visited;
+    
+    public int categoriesCount(List<int[]> pairs){
+        visited = new HashSet<>();
+        // prepare adj
+        Map<Integer< List<Integer>> adj = new HashMap<>();
+        for(int[] p : pairs){
+            int a = p[0];
+            int b = p[1];
+            if(!adj.containsKey(a)){
+                adj.put(a, new List<Integer>());
+            }
+            if(!adj.containsKey(b)){
+                adj.put(b, new List<Integer>());
+            }
+            
+            adj.get(a).add(b);
+            adj.get(b).add(a);
+        }
+        
+        int categoryCount = 0;
+        // calling dfs on keys
+        for(int key : adj.keySet()){
+            if(!visited.contains(key)){
+                dfs(adj, key);      
+                categoryCount++;        //
+            }
+        }
+        
+        return categoryCount;
+    }
+    
+    
+    public void dfs(Map<Integer< List<Integer>> adj, int source){   // adj, 1 | adj, 5 | adj, 2 | adj, 7
+        visited.add(source);        // invalidate this node.
+        
+        for(int connection : adj.get(source)){  // recursion to all the unvisited neigh.
+            if(!visited.contains(connection)){
+                dfs(adj, connection);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
