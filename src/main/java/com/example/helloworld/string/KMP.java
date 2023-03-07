@@ -3,6 +3,11 @@ package com.example.helloworld.string;
 /**
  * @author sahil
  *
+ * Matching problem :
+ * leetcode 28. Find the Index of the First Occurrence in a String
+ * https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/
+ *
+ *
  * Do pattern matching using KMP algorithm
  *
  * Runtime complexity - O(m + n) where m is length of text and n is length of pattern
@@ -82,8 +87,10 @@ public class KMP {
 
     public static void main(String args[]){
 
-        String str = "abcxabcdabcdabcy";
-        String subString = "abcdabcy";
+//        String str = "abcxabcdabcdabcy";
+//        String subString = "abcdabcy";
+        String str = "hello";
+        String subString = "ll";
         KMP ss = new KMP();
         boolean result = ss.KMP(str.toCharArray(), subString.toCharArray());
         System.out.print(result);
