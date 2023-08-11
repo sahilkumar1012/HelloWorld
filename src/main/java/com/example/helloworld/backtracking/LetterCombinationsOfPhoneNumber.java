@@ -53,9 +53,9 @@ public class LetterCombinationsOfPhoneNumber {
             return;
         }
 
-        int number=digits.charAt(0)-'0'; //getting the digits like in case of "23" we get 2
+        int number=digits.charAt(0)-'0'; // getting the digits like in case of "23" we get 2
 
-        String let=letter[number-1]; //accesing which string is present in the given index
+        String let=letter[number-1]; // accessing which string is present in the given index
 
         for(int j=0;j<let.length();j++)
             combinations(digits.substring(1),asf+let.charAt(j));
