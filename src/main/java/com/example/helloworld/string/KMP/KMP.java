@@ -1,4 +1,6 @@
-package com.example.helloworld.string;
+package com.example.helloworld.string.KMP;
+
+import java.util.Arrays;
 
 /**
  * @author sahil
@@ -42,7 +44,7 @@ public class KMP {
      * Compute temporary array to maintain size of suffix which is same as prefix
      * Time/space complexity is O(size of pattern)
      */
-    private int[] computeTemporaryArray(char pattern[]){
+    public int[] computeTemporaryArray(char pattern[]){
         int [] lps = new int[pattern.length];
         int index =0;
         for(int i=1; i < pattern.length;){
@@ -88,12 +90,16 @@ public class KMP {
     public static void main(String args[]){
 
 //        String str = "abcxabcdabcdabcy";
-//        String subString = "abcdabcy";
-        String str = "hello";
-        String subString = "ll";
+////        String subString = "abcdabcy";
+//        String str = "hello";
+//        String subString = "ll";
         KMP ss = new KMP();
-        boolean result = ss.KMP(str.toCharArray(), subString.toCharArray());
-        System.out.print(result);
+//        boolean result = ss.KMP(str.toCharArray(), subString.toCharArray());
+//        System.out.print(result);
+
+//  create a test to find lps of     abcabcabcabc
+        int [] lps = ss.computeTemporaryArray("abcabcabcabc".toCharArray());
+        System.out.println(Arrays.toString(lps));;
 
     }
 }
