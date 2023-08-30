@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * leetcode 279. Perfect Squares
+ * reference video : https://youtu.be/aZuQXkO0-XA
  *
  * Given an integer n, return the least number of perfect square numbers that sum to n.
  *
@@ -29,16 +30,22 @@ import java.util.Arrays;
  */
 public class PerfectSquares {
     public int numSquares(int n) {
-        int dp[] = new int[n+1];
-        Arrays.fill(dp, Integer.MAX_VALUE);
+        int[] dp = new int[n+1];
         dp[0] = 0;
+        dp[1] = 1;
 
-        // using  linear one d dp. calculate value for every element from 1 to n
-        for(int i=1; i<=n; ++i){
-            for(int j=1; j*j<=i; ++j){
-                dp[i] = Math.min(dp[i], dp[i-j*j]+1);
+        for(int i=2; i<=n; i++){
+            int min = Integer.MAX_VALUE;
+
+            for(int j=1; j*j <= i; j++){        // watch mentioned video if not clear
+                int rem = i - j*j;
+                if(dp[rem] < min){
+                    min = dp[rem];
+                }
             }
+            dp[i] = min+1;
         }
+
         return dp[n];
     }
 }
