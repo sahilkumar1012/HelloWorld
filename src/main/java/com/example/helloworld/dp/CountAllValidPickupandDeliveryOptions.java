@@ -37,22 +37,23 @@ package com.example.helloworld.dp;
  *
  */
 public class CountAllValidPickupandDeliveryOptions {
+    // mathematics
+    // video solution : https://youtu.be/JlBSoswl87c
     public int countOrders(int n) {
-        long[] dp = new long[501];      // had to take long instead of int
-        int m = 1000000007;
+        int M = 1000000007;
+        if( n == 1 ) return 1;
+        long result = 1;
 
-        dp[1] = 1;
-        dp[2] = 6;
+        for(int i=2; i<=n; i++){
+            int spaces = (i-1) * 2 + 1;  //         _ p1 _ d1 _
+            int possibility = ( spaces * (spaces+1) ) /2;
 
-        for(int i=3; i<=n; i++){
-            int onumber = 2 * i -1;
-            int permutations = onumber * (onumber + 1)/2;
-            dp[i] = ( dp[i-1] * permutations ) %m;
+            result *= possibility;
+            result %= M ;
         }
 
-        return (int) dp[n];
+        return (int)result;
     }
-
 
 }
 
