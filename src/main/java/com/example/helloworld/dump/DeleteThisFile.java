@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class DeleteThisFile {
     public static void main(String[] args) {
-
+        System.out.println("Hi");
     }
 
     public List<List<Integer>> groupThePeople(int[] groupSizes) {

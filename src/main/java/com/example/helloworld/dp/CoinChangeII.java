@@ -41,6 +41,12 @@ package com.example.helloworld.dp;
  * 1 <= coins[i] <= 5000
  * All the values of coins are unique.
  * 0 <= amount <= 5000
+ *
+ * Follow up question : https://youtu.be/JyyS9mlMcr4?list=PL-Jc9J83PIiG8fE6rj9F5a6uyQ5WPdqKy
+ * try finding permutations instead of combinations,
+ *      for permutations, for each targetsum check number of ways to achieve that sum using all the coins
+ *      infinitely.
+ *      for combinations, we have to consider the effect of coins for all the targetsums, as used in this implementation
  */
 public class CoinChangeII {
     public int change(int amount, int[] coins) {
