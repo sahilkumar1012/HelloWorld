@@ -1,5 +1,7 @@
 package com.example.helloworld.bitmanipulation;
 
+import java.util.List;
+
 /**
  * leetcode 779. Kth Symbol in Grammar
  *
@@ -39,6 +41,7 @@ package com.example.helloworld.bitmanipulation;
  * 1 <= k <= 2n - 1
  */
 public class KthSymbolInGrammar {
+    // recursion method
     public int recursion(int n, int k) {
         // First row will only have one symbol '0'.
         if (n == 1) {
