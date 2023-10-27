@@ -1,4 +1,4 @@
-package com.example.helloworld.dump.morganstanley.testdump;
+package com.example.helloworld.tests.morganstanley.testdump;
 
 public class ChildUtil extends ParentUtil {
     public static void main(String[] args) {

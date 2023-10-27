@@ -1,4 +1,4 @@
-package com.example.helloworld.dump.morganstanley.testdump;
+package com.example.helloworld.tests.morganstanley.testdump;
 
 import java.util.*;
 

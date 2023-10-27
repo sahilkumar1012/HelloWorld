@@ -11,36 +11,25 @@ public class DeleteThisFile {
         System.out.println("Hi");
     }
 
-    public List<List<Integer>> groupThePeople(int[] groupSizes) {
-        int n = groupSizes.length;
-        // create an array of list<list<Integer>
-        List<List<Integer>>[] arr = new List[n+1];
-        for(int i=0; i<n; i++){
-            arr[i] = new ArrayList<>();
-        }
+    public int kthGrammar(int n, int k) {
+        List<Character> prow = new ArrayList<>();
 
-        for(int i=0; i<n; i++){
-            int size = groupSizes[i];
-
-            List<List<Integer>> row = arr[size];
-            if(row.size() == 0){
-                row.add(new ArrayList<>());
+        prow.add('0');
+        for(int i=2; i<=n; i++){
+            List<Character> crow = new ArrayList<>();
+            for(Character ch : prow){
+                if(ch == '0'){
+                    crow.add('0');
+                    crow.add('1');
+                }else if(ch == '1'){
+                    crow.add('1');
+                    crow.add('0');
+                }
             }
-            if(row.get(row.size()-1).size() == size){
-                row.add(new ArrayList<>());
-            }
-            row.get(row.size()-1).add(i);
+            prow.clear();
+            prow.addAll(crow);
         }
-
-        List<List<Integer>> result = new ArrayList<>();
-        for(int i=0; i<n+1; i++){
-            List<List<Integer>> row = arr[i];
-            if(row.size() > 0){
-                result.addAll(row);
-            }
-        }
-
-        return result;
+        return prow.get(k);
     }
 
 }
