@@ -46,7 +46,7 @@ package com.example.helloworld.dp;
  */
 public class CoinChange {
 
-    // https: //youtu.be/jgiZlGzXMBw video for reference.
+    // https://youtu.be/jgiZlGzXMBw video for reference.
     // bottom up dp
     public int coinChange(int[] c, int amt) {
         int dp[] = new int[amt+1]; // we need 0 coins for 0.
@@ -56,8 +56,8 @@ public class CoinChange {
 
             for(int coin : c){
 
-                if( i-coin >= 0){  // can use this coin?
-                    if( dp[i-coin] + 1 < dp[i])
+                if( i-coin >= 0){  // can use this coin ?
+                    if( dp[i-coin] + 1 < dp[i] )
                         dp[i] = dp[i-coin] + 1;
                 }
             }

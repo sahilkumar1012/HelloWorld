@@ -50,13 +50,12 @@ package com.example.helloworld.dp;
  */
 public class CoinChangeII {
     public int change(int amount, int[] coins) {
-        int n = coins.length;
         int[] dp = new int[amount+1];
-        dp[0] = 1;
+        dp[0] = 1;      // only 1 way to get amount of 0, not considering any coin
 
         for (int coin : coins) {     // take effect of coins one by one
             for (int j = coin; j <= amount; j++) {       // for all amount
-                dp[j] += dp[j - coin];
+                dp[j] += dp[j - coin];      // to achieve 7 number of ways to achieve 2 using 1,2,5 + other possibilities
             }
         }
 
