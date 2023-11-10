@@ -2,6 +2,7 @@ package com.example.helloworld.math;
 
 /**
  * leetcode 1759. Count Number of Homogenous Substrings
+ * reference video link : https://youtu.be/392JZwTeqEA
  *
  * Given a string s, return the number of homogenous substrings of s. Since the answer may be too large, return it modulo 109 + 7.
  *
