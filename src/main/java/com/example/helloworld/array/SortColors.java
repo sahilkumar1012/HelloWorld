@@ -42,34 +42,6 @@ package com.example.helloworld.array;
  */
 public class SortColors {
 
-    // older self approach.
-    public void sortColorsK(int[] nums) {
-        int start  = 0, end = nums.length-1;
-
-        int i = 0;
-        while(i<=end){
-            while(start<=end && nums[start]==0)
-                start++;
-            while(end>=start && nums[end]==2)
-                end--;
-            if(i<start)
-                i=start;
-
-            if(start<=end && nums[i]==0){
-                nums[i] = nums[start];
-                nums[start] = 0;
-                start++;
-                i++;
-            }else if(start<=end && nums[i]==2 ){
-                nums[i] = nums[end];
-                nums[end] = 2;
-                end--;
-            }else{
-                i++;
-            }
-        }
-    }
-
     public void sortColors(int[] nums) {
         int l=-1, m=0, r=nums.length-1;
 

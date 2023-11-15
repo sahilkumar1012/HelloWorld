@@ -1,9 +1,10 @@
-package com.example.helloworld.graph;
+package com.example.helloworld.graph.unionfind;
 
 import java.util.Arrays;
 
 /**
- * leetcode 261. Graph Valid Tree
+ * leetcode 261. Graph Valid Tree   | Premium question
+ * https://leetcode.com/problems/graph-valid-tree/description/
  *
  * You have a graph of n nodes labeled from 0 to n - 1. You are given an integer n and a list of edges where edges[i] = [ai, bi] indicates that there is an undirected edge between nodes ai and bi in the graph.
  *
@@ -55,9 +56,9 @@ public class GraphValidTree {
             if(a != b){
                 n--;    // using one edge
                 father[a] = b;
-                return true;        // this edge will cause loop, so not a valid tree.
+                return true;
             }
-            return false;
+            return false;       // this edge will cause loop, so not a valid tree.
         }
     }
 

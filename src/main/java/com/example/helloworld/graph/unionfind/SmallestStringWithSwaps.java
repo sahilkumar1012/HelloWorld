@@ -80,17 +80,17 @@ public class SmallestStringWithSwaps {
      * Disjiont set / Union find / detect cycle in undirected graph.
      * Standard UnionFind data structure template, use it in your program | union find data structure, disjoint set by sahil
      */
-    class UnionFind {
+    static class UnionFind {
         int[] parent;
         public UnionFind(int n) {
             parent = new int[n];
-            Arrays.fill(parent, -1);
+            Arrays.fill(parent, -1);        // no parent, single node currently in component, khud ka parent
         }
         public int find(int x) {
             if (parent[x] == -1) {
                 return x;
             }
-            return parent[x] = find(parent[x]);
+            return parent[x] = find(parent[x]);         // pruning
         }
         public void union(int a, int b) {
             a = find(a);
