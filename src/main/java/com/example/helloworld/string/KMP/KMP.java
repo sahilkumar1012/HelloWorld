@@ -19,6 +19,8 @@ public class KMP {
 
     /**
      * Slow method of pattern matching
+     *
+     * O(m*n)
      */
     public boolean hasSubstring(char[] text, char[] pattern){
         int i=0;
@@ -42,9 +44,9 @@ public class KMP {
 
     /**
      * Compute temporary array to maintain size of suffix which is same as prefix
-     * Time/space complexity is O(size of pattern)
+     * Time/space complexity is O(size of pattern) O(m+n)
      */
-    public int[] computeTemporaryArray(char pattern[]){
+    public int[] computeTemporaryArray(char[] pattern){
         int [] lps = new int[pattern.length];
         int index =0;
         for(int i=1; i < pattern.length;){
