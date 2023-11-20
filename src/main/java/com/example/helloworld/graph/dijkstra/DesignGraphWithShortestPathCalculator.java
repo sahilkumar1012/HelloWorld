@@ -76,10 +76,13 @@ class Graph {
         while(!pq.isEmpty()){
             int[] curr = pq.poll();
             int currCost = curr[0], currNode = curr[1];
+
             if(currNode == node2)
                 return currCost;
+
             if(currCost > costForNode[currNode])
                 continue;
+
             for(int[] neighbor : adj.get(currNode)){
                 int neighborNode = neighbor[0], neighborCost = neighbor[1];
                 int newCost = currCost + neighborCost;
