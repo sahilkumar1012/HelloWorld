@@ -43,7 +43,7 @@ public class MinCosttoConnectAllPoints {
     public int minCostConnectPoints(int[][] points) {
 //        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> { return a[2] - b[2]; });
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
-        pq.offer(new int[]{0,0,0});
+        pq.offer(new int[]{0,0,0});         // source dest travel-cost
 
         int cost = 0, n = points.length;
         Set<Integer> visited = new HashSet<>();
