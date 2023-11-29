@@ -2,6 +2,7 @@ package com.example.helloworld.bitmanipulation;
 
 /**
  * leetcode 191. Number of 1 Bits
+ * https://leetcode.com/problems/number-of-1-bits/
  *
  * Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
  *
@@ -36,25 +37,18 @@ package com.example.helloworld.bitmanipulation;
  * Follow up: If this function is called many times, how would you optimize it?
  */
 public class NumberOf1Bits {
-    // you need to treat n as an unsigned value
-    // in java. negative numbers are respresented as 2's complement.
 
     public int hammingWeight(int n) {
-        // return Integer.bitCount(n);
-        System.out.println("given input: " + Integer.toBinaryString(n));
-        int count = 0;
-        while (n != 0) {               // n!=0 hi chalegi yahan pe
-//            n &= (n - 1);
-
-            int lsbm = n & (-n);
-            n = n - lsbm;
-            count++;
-            System.out.println(" -> " + Integer.toBinaryString(n));
+        int ans = 0;
+        while( n != 0){
+            n = n & (n-1);      // remove right most significant bit of n
+            ans++;
         }
-        return count;
+
+        return ans;
     }
 
     public static void main(String[] args) {
-        System.out.println(new NumberOf1Bits().hammingWeight(6));
+        System.out.println(new NumberOf1Bits().hammingWeight(11));
     }
 }
