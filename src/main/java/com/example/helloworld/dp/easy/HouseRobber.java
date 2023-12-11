@@ -1,5 +1,7 @@
 package com.example.helloworld.dp.easy;
 
+import static com.example.helloworld.interviews.sahil.uiPath.UiPathInterviewRound2Coding.sol;
+
 /**
  * leetcode 198. House Robber
  *
@@ -42,5 +44,17 @@ public class HouseRobber {
             dp[i] = Math.max( dp[i-1] , dp[i-2] + nums[i]);
 
         return dp[n-1];
+    }
+
+    public static void main(String[] args) {
+        HouseRobber houseRobber = new HouseRobber();
+       int[] nums = {1,2,3,1};
+       System.out.println(houseRobber.sol(nums, 3));
+    }
+
+    private int sol(int[] nums, int i) {
+        if(i==0) return nums[0];
+        if(i==1) return Math.max(nums[0], nums[1]);
+        return Math.max(nums[i] + sol(nums, i-2) , sol(nums, i-1));
     }
 }
