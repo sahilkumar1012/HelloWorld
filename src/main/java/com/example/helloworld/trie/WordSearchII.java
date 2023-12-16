@@ -79,7 +79,6 @@ public class WordSearchII {
         }
 
         return result;
-
     }
 
     public void dfs(char[][] board, List<String> result, Trie root, int i , int j) {
