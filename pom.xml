@@ -25,17 +25,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx</artifactId>
-            <version>21</version>
-            <type>pom</type>
-        </dependency>
-
-
-
-
     </dependencies>
     
 </project>
