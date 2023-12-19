@@ -1,0 +1,173 @@
+// Google interview question round 1.
+
+/*
+You are given a list of houses grouped into neighborhoods. Houses are painted in colors.
+The first input is an array representing house numbers in each neighborhood. One sub-array represents one neighborhood. Example:
+{{8, 2, 9}, {4, 6, 4}, {4, 5, 1}}
+
+Each house is painted, so the second input is an array representing the color codes for each house. Example:
+{{'r', 'g', 'b'}, {'w', 'c', 'b'}, {'x', 'y', 'b'}}
+
+This means that House 8 is painted in color r, House 2 is g, House 9 is b etc.
+
+Imagine that you can move houses, reorganize the neighborhoods such that the houses in each neighborhood are in ascending order, and no house numbers are repeated in a neighborhood.
+The neighborhood structure must be preserved, meaning that the number of neighborhoods and the number of houses in each neighborhood should remain the same as given.
+Here are a couple of possible outputs of how the houses from the example above could be restructured:
+{{1, 2, 4}, {4, 5, 6}, {4, 8, 9}}
+{{1, 4, 6}, {2, 4, 8}, {4, 5, 9}}
+
+{{1,2,4},{4,5,6},{4,6,8}}
+
+Return all houses structured in neighborhoods along with their colors in the new order. If printing it, a sample output would look like this:
+{{1b, 4b, 6c}, {2g, 4x, 8r}, {4w, 5y, 9b}}
+
+*/
+
+/*
+  valid input :
+  house : {{8, 2, 9}, {4, 6, 4}, {4, 5, 1}}
+
+          1,2,4,4,4,5,6,8,9
+
+          1 - 1
+          2 - 1
+          4 - 3
+          5 - 1
+          6 - 1
+          8 - 1
+          9 - 1
+
+          [1,2,4] [] []
+
+          1 - 0
+          2 - 0
+          4 - 1
+          5 - 0
+          6 - 0
+          8 - 1
+          9 - 1
+
+          [1,2,4] [4,5,6] []
+
+                    1 - 0
+          2 - 0
+          4 - 0
+          5 - 0
+          6 - 0
+          8 - 0
+          9 - 0
+
+          [1,2,4] [4,5,6] [4,8,9]
+
+          1,2,4,5,6,8,9,9,9
+
+
+
+          1,2,4,5,6,8,9,9,9
+
+          1 1
+          2 1
+          4 1
+          5 1
+          6 1
+          8 1
+          9 3
+
+          { {1} {2} {4} }
+
+           1 0
+          2 0
+          4 0
+          5 1
+          6 1
+          8 1
+          9 3
+
+          { {1 5} {2 6 } {4 8 } }
+
+          1 0
+          2 0
+          4 0
+          5 0
+          6 0
+          8 0
+          9 0
+
+          { {1 5 9 } {2 6 9} {4 8 9} }
+
+  color : {{'r', 'g', 'b'}, {'w', 'c', 'b'}, {'x', 'y', 'b'}}
+*/
+
+/*
+class Pair{
+  int housenumber;  // 8
+  char color;   // 'r'
+  // Data constructors, equals, hashcode, getter & setters.
+}
+*/
+// x freq : n  > no. of neigh. [ no answer ]
+
+
+class Solution{
+
+    public List<List<String>> arrange ( List<List<Integer>> houseno , List<List<Character>> color ){
+        if(houseno == null || houseno.size() == 0) return null;
+
+
+        int m = houseno.size();
+        int n = houseno.get(0).size();
+
+
+        //Collections.sort(list , (a,b) -> {
+        //   return a.housenumber - b.housenumber;
+        //} );
+
+        // fill in the ans.
+
+
+      /*
+        hosue no : color map
+        house no : count
+
+
+        20000
+
+        int[] hash = new int[20000];
+
+      */
+
+      Map<Integer, List<Character> > map = new HashMap();
+      int[] hash = new int[20000];
+
+       for(int i=0; i<m ; i++){
+          for(int j=0; j<n; j++){
+            hash[houseno.get(i).get(j)]++;
+            map.getOrDefault( houseno.get(i).get(j), new ArrayList<>() ).add(color.get(i).get(j);
+          }
+        }
+
+       List<List<String>> result = new ArrayList<>();
+
+
+       int k= 0;
+       for(int i=0; i<n ; i++){   // ith house in that neighborhood
+          for(int j=0; j<m; j++){   // neighborhood
+             while(k<20000 && hash[k] == 0){
+               k++;
+             }
+            int hno = k;
+            character color = map.get(hno).get(0);
+            map.get(hno).remove(0);
+
+            String s = "" + k + color;
+            result.get(i).set(j, s);
+          }
+        }
+
+          return result;
+
+    }
+}
+
+
+
