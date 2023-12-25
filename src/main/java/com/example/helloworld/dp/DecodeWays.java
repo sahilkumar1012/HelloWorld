@@ -1,9 +1,11 @@
 package com.example.helloworld.dp;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+
 /**
- * leetcode 91. Decode Ways
+ * LeetCode 91. Decode Ways
+ * https://leetcode.com/problems/decode-ways/
+ * Solution Video :
  *
  * A message containing letters from A-Z can be encoded into numbers using the following mapping:
  *
@@ -19,7 +21,7 @@ import java.util.Map;
  *
  * Given a string s containing only digits, return the number of ways to decode it.
  *
- * The answer is guaranteed to fit in a 32-bit integer.
+ * The test cases are generated so that the answer fits in a 32-bit integer.
  *
  *
  *
@@ -35,13 +37,6 @@ import java.util.Map;
  * Explanation: "226" could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
  * Example 3:
  *
- * Input: s = "0"
- * Output: 0
- * Explanation: There is no character that is mapped to a number starting with 0.
- * The only valid mappings with 0 are 'J' -> "10" and 'T' -> "20", neither of which start with 0.
- * Hence, there are no valid ways to decode this since all digits need to be mapped.
- * Example 4:
- *
  * Input: s = "06"
  * Output: 0
  * Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is different from "06").
@@ -53,65 +48,70 @@ import java.util.Map;
  * s contains only digits and may contain leading zero(s).
  */
 public class DecodeWays {
-    int res;
-    Map<Integer,Integer> map ;
 
-    public int numDecodingssk(String s){
-        res = 0;
-        map = new HashMap<>();
+    int[] dp;  // Dynamic programming array to store solutions
 
-        if(s.charAt(0)=='0')
-            return 0;
-        return sol(s,0);
-        // return res;
+    /**
+     * Recursive solution to count the number of decodings.
+     * @param s The input string containing digits.
+     * @return The number of ways to decode the string.
+     */
+    public int numDecodingsRecursive(String s) {
+        dp = new int[s.length()];
+        Arrays.fill(dp, -1);  // Initialize dp array with -1
+
+        return solve(s, 0);
     }
 
-    // recurssion with memorization
-    private int sol(String s, int idx){
-        if(idx==s.length()){
-            res++;
-            return 1;
-        }
-        int sum = 0;
-        if(map.get(idx)!=null){
-            return map.get(idx);
-        }
+    /**
+     * Helper recursive function to solve the decoding problem.
+     * @param s The input string.
+     * @param i The current index in the string.
+     * @return Number of ways to decode from index i to end of string.
+     */
+    private int solve(String s, int i) {
+        if (i == s.length()) return 1;  // Base case: If reached end of string, return 1
 
-        if(s.charAt(idx) >= '1' && s.charAt(idx) <= '9'){
-            sum += sol(s,idx+1);
-        }
-        if(idx < s.length()-1){
-            int val = Integer.parseInt(s.substring(idx,idx+2));
-            // System.out.println(val);
-            if(val>=10 && val<=26){
-                sum += sol(s,idx+2);
+        if (dp[i] != -1) return dp[i];  // If solution is already computed, return it
+
+        int ans = 0;
+        int firstDigit = s.charAt(i) - '0';
+
+        // Single digit decode
+        if (firstDigit >= 1 && firstDigit <= 9)
+            ans += solve(s, i + 1);
+
+        // Double digit decode
+        if (i + 1 < s.length()) {
+            int second = Integer.valueOf(s.substring(i, i + 2));
+            if (second >= 10 && second <= 26) {
+                ans += solve(s, i + 2);
             }
         }
 
-        map.put(idx,sum);
-        return sum;
+        return dp[i] = ans;  // Store and return the result
     }
 
-    /*
-    Nice easy dp solution.
+    /**
+     * Dynamic programming solution to count the number of decodings.
+     * @param s The input string containing digits.
+     * @return The number of ways to decode the string.
      */
     public int numDecodings(String s) {
-        int n = s.length();
-        if(n==0 || s.charAt(0)=='0') return 0;  // corner case, starting mai zero ko can't decode.
+        dp = new int[s.length() + 1];  // DP array of size (length + 1) for bottom-up approach
+        dp[0] = 1;  // Base case for empty string
+        dp[1] = s.charAt(0) == '0' ? 0 : 1;  // Base case for first character
 
-        int dp[] = new int[n+1]; // initialized with 0
-        dp[0] = 1; // dummy.
-        dp[1] = 1;
-
-        for(int i=2; i<=n; ++i){
-            if(s.charAt(i-1)>='1' && s.charAt(i-1)<='9'){
-                dp[i] += dp[i-1];
+        for (int i = 2; i <= s.length(); i++) {
+            if (s.charAt(i - 1) != '0') {
+                dp[i] = dp[i - 1];  // If single digit is valid, take its count
             }
-            int temp = Integer.parseInt(s.substring(i-2,i));
-            if(temp>=10 && temp<=26){
-                dp[i] += dp[i-2];
+            int two = Integer.valueOf(s.substring(i - 2, i));  // Check for two-digit validity
+            if (two >= 10 && two <= 26) {
+                dp[i] += dp[i - 2];  // If two digits form a valid number, add its count
             }
         }
-        return dp[n];
+
+        return dp[s.length()];  // Return the total count for the whole string
     }
 }
