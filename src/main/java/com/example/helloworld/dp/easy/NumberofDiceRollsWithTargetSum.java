@@ -3,6 +3,8 @@ package com.example.helloworld.dp.easy;
 /**
  * LeetCode Problem 1155: Number of Dice Rolls With Target Sum
  * https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
+ * Code harmony video solution link : https://youtu.be/uafzOv5lajk
+ *
  *
  * Problem Description:
  * You have n dice, and each die has k faces numbered from 1 to k.
