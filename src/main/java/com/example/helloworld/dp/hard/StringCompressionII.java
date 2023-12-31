@@ -36,11 +36,8 @@ import java.util.Set;
  * Explanation: Since k is zero, we cannot delete anything. The compressed string is "a11" of length 3.
  *
  *
- * Constraints:
- *
- * 1 <= s.length <= 100
- * 0 <= k <= s.length
- * s contains only lowercase English letters.
+
+
  */
 public class StringCompressionII {
 
