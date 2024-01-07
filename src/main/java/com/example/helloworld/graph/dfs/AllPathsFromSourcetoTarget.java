@@ -36,26 +36,48 @@ import java.util.List;
  */
 public class AllPathsFromSourcetoTarget {
 
+    /**
+     * Main function to find all paths from the source (0) to the target (n - 1).
+     *
+     * @param graph A directed acyclic graph represented as an adjacency list.
+     * @return A list of all paths from the source to the target node.
+     */
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         List<List<Integer>> ans = new ArrayList<>();
 
+        // Perform depth-first search starting from node 0
         dfs(graph, 0, new boolean[graph.length], new ArrayList<>(), ans);
 
         return ans;
     }
 
-    public void dfs(int[][] graph, int v, boolean[] visited, List<Integer> temp, List<List<Integer>> ans){
+    /**
+     * Depth-first search (DFS) function to explore all possible paths from a given node.
+     *
+     * @param graph   The input directed acyclic graph.
+     * @param v       Current node being processed.
+     * @param visited Array to track visited nodes to avoid revisiting.
+     * @param temp    Temporary list to store the current path being explored.
+     * @param ans     List to store all paths from source to target.
+     */
+    public void dfs(int[][] graph, int v, boolean[] visited, List<Integer> temp, List<List<Integer>> ans) {
+        // Mark the current node as visited and add it to the temporary path
         visited[v] = true;
         temp.add(v);
 
-        if( v == graph.length - 1 )
+        // If we reach the target node, add the current path to the answer list
+        if (v == graph.length - 1) {
             ans.add(new ArrayList<>(temp));
-        else{
-            for(int nv : graph[v]){
-                dfs(graph, nv, visited, temp, ans);
+        } else {
+            // Explore all adjacent nodes (neighbours) of the current node
+            for (int nv : graph[v]) {
+                if (!visited[nv]) { // Only visit unvisited nodes to avoid cycles
+                    dfs(graph, nv, visited, temp, ans); // Recursive DFS call
+                }
             }
         }
 
-        temp.remove(temp.size()-1);
+        // Backtrack: Remove the current node from the temporary path to explore other paths
+        temp.remove(temp.size() - 1);
     }
 }
