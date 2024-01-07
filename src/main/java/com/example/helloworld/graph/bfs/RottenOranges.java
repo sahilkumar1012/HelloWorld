@@ -45,62 +45,69 @@ import java.util.Queue;
  * grid[i][j] is 0, 1, or 2.
  *
  */
+
 public class RottenOranges {
 
+    /**
+     * Method to find the minimum number of minutes required for all oranges to rot.
+     *
+     * @param grid 2D grid representing the oranges.
+     * @return Minimum minutes to rot all oranges, or -1 if not possible.
+     */
     public int orangesRotting(int[][] grid) {
-        int m = grid.length;
-        int n = grid[0].length;
+        int m = grid.length; // Rows of the grid
+        int n = grid[0].length; // Columns of the grid
 
-        int time = 0;
-        Queue<Index> q= new LinkedList<>();
+        int time = 0; // Time counter
+        Queue<Index> q = new LinkedList<>(); // Queue to keep track of rotten oranges
 
-        // scan all rotten oranges and put in queue
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                if(grid[i][j] == 2)
-                    q.offer(new Index(i,j));
+        // Scan the grid to find rotten oranges and add them to the queue.
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 2)
+                    q.offer(new Index(i, j)); // Add rotten orange index to the queue.
             }
         }
 
-        // bfs
-        while(!q.isEmpty()){
-            time++;
-            int len = q.size();
+        // BFS traversal to spread the rotten oranges and calculate the time.
+        while (!q.isEmpty()) {
+            time++; // Increment the time for each level (minute)
 
-            while(len-- > 0){
-                Index temp= q.poll();
+            int len = q.size(); // Current size of the queue indicates oranges to be rotten in this minute.
+
+            while (len-- > 0) {
+                Index temp = q.poll(); // Dequeue the rotten orange.
                 int x = temp.x;
                 int y = temp.y;
 
-                if(y+1<n && grid[x][y+1]==1){
-                    q.offer(new Index(x,y+1));
-                    grid[x][y+1]=2;
+                // Check 4-directional neighboring cells and make fresh oranges rotten.
+                if (y + 1 < n && grid[x][y + 1] == 1) {
+                    q.offer(new Index(x, y + 1)); // Add the index of the fresh orange to the queue.
+                    grid[x][y + 1] = 2; // Update the grid to mark the orange as rotten.
                 }
-                if(y-1 >= 0 && grid[x][y-1]==1){
-                    q.offer(new Index(x,y-1));
-                    grid[x][y-1]=2;
+                if (y - 1 >= 0 && grid[x][y - 1] == 1) {
+                    q.offer(new Index(x, y - 1));
+                    grid[x][y - 1] = 2;
                 }
-                if(x+1<m && grid[x+1][y]==1){
-                    q.offer(new Index(x+1,y));
-                    grid[x+1][y]=2;
+                if (x + 1 < m && grid[x + 1][y] == 1) {
+                    q.offer(new Index(x + 1, y));
+                    grid[x + 1][y] = 2;
                 }
-                if(x-1 >= 0 && grid[x-1][y]==1){
-                    q.offer(new Index(x-1,y));
-                    grid[x-1][y]=2;
+                if (x - 1 >= 0 && grid[x - 1][y] == 1) {
+                    q.offer(new Index(x - 1, y));
+                    grid[x - 1][y] = 2;
                 }
-            }
-
-        }
-
-        // impossible for oranges to get rotten, so return -1.
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                if(grid[i][j] == 1)
-                    return -1;
             }
         }
 
-        return time>0 ? time-1 : 0; // first batch to sada hua hi mila tha na aapa ko.
+        // After BFS traversal, check if any fresh orange remains.
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1)
+                    return -1; // If fresh orange remains, return -1 as it's impossible to rot all oranges.
+            }
+        }
+
+        return time > 0 ? time - 1 : 0; // Return the time taken to rot all oranges, considering the initial condition.
     }
-
 }
