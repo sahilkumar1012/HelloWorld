@@ -23,29 +23,40 @@ public class DetectCycleInDirectedGraph {
 
     // Function to detect cycle in a directed graph.
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
-        // code here
+        // Create an array to track nodes that have been visited during traversal.
         boolean[] visited = new boolean[V];
+
+        // Create an array to track nodes that have been visited in the current traversal path.
         boolean[] currVisited = new boolean[V];
 
-        for(int i=0; i<V; i++){
-            if(!visited[i] && cycle(i, visited, currVisited, adj))
+        // Traverse each vertex in the graph.
+        for (int i = 0; i < V; i++) {
+            // If the vertex hasn't been visited yet and there's a cycle starting from it, return true.
+            if (!visited[i] && cycle(i, visited, currVisited, adj))
                 return true;
         }
+        // If no cycle is detected after traversing all vertices, return false.
         return false;
     }
-    private boolean cycle(int s, boolean[] visited, boolean[] currVisited, ArrayList<ArrayList<Integer>> adj){
+
+    // Helper function to detect cycle using Depth First Search (DFS).
+    private boolean cycle(int s, boolean[] visited, boolean[] currVisited, ArrayList<ArrayList<Integer>> adj) {
+        // Mark the current node as visited in both arrays.
         visited[s] = true;
         currVisited[s] = true;
 
-        for(int i : adj.get(s)){
-
-            if(!visited[i] && cycle(i, visited, currVisited, adj)){
+        // Explore all adjacent vertices of the current node.
+        for (int i : adj.get(s)) {
+            // If an adjacent vertex is not visited yet and it leads to a cycle, return true.
+            if (!visited[i] && cycle(i, visited, currVisited, adj)) {
                 return true;
-            }else if(visited[i] && currVisited[i] ){
+            }
+            // If the adjacent vertex has been visited in the current traversal, a cycle is detected.
+            else if (visited[i] && currVisited[i]) {
                 return true;
             }
         }
+        // Backtrack: Mark the current node as unvisited in the current traversal path and return false.
         return currVisited[s] = false;
     }
-
 }
