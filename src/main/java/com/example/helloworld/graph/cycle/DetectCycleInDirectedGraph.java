@@ -42,7 +42,7 @@ public class DetectCycleInDirectedGraph {
     // Helper function to detect cycle using Depth First Search (DFS).
     private boolean cycle(int s, boolean[] visited, boolean[] currVisited, ArrayList<ArrayList<Integer>> adj) {
         // Mark the current node as visited in both arrays.
-        visited[s] = true;
+        visited[s] = true;      // taking this to improve the complexity, and avoid making access cheques.
         currVisited[s] = true;
 
         // Explore all adjacent vertices of the current node.
@@ -59,4 +59,7 @@ public class DetectCycleInDirectedGraph {
         // Backtrack: Mark the current node as unvisited in the current traversal path and return false.
         return currVisited[s] = false;
     }
+
+    // write a main method to test
+
 }
