@@ -37,47 +37,52 @@ import java.util.ArrayList;
  */
 public class CourseSchedule {
 
-    // if cycle present in this directed graph
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        return hasCycle(numCourses, prerequisites) == false;
-    }
-
-    private boolean hasCycle(int numCourses, int[][] prerequisites){
-
+        // Step 1: Prepare adjacency list representation of the directed graph
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-        for(int i=0; i<numCourses; i++){
-            adj.add(new ArrayList<>());
-        }
-        for(int[] e : prerequisites){
-            adj.get(e[0]).add(e[1]);
+        for(int i = 0; i < numCourses; i++){
+            adj.add(new ArrayList<>()); // Initialize adjacency list for each course
         }
 
-        System.out.println(adj);
-
-        boolean[] visited = new boolean[numCourses];
-        boolean[] currVisited = new boolean[numCourses];
-
-        for(int i=0; i<numCourses; i++){
-            if(!visited[i] && cycle(i, visited, currVisited, adj)){
-                return true;
-            }
+        // Populate the adjacency list based on prerequisites
+        for(int[] edge : prerequisites){
+            int u = edge[0], v = edge[1];
+            adj.get(u).add(v); // Add directed edge from u to v
         }
 
-        return false;   // no cycle in this directed graph.
+        // Step 2: Use DFS to detect cycles in the directed graph
+        boolean[] visited = new boolean[numCourses];     // Track visited nodes in the current DFS path
+
+        // draw a diagram , if you're not able to visualize the need to global visited array
+        boolean[] globalVisited = new boolean[numCourses];// Track nodes visited across all DFS calls
+
+        for(int i = 0; i < numCourses; i++){
+            // Check for cycle starting from each course if not already visited
+            if(cycle(adj, i, visited, globalVisited))   // Note: visited should be fresh in each DFS call
+                return false; // If cycle is detected, return false (cannot finish the courses)
+        }
+
+        return true; // If no cycle detected, return true (can finish the courses)
     }
 
-    private boolean cycle(int s, boolean[] visited, boolean[] currVisited, ArrayList<ArrayList<Integer>> adj){
-        visited[s] = true;
-        currVisited[s] = true;
+    // Helper function to detect cycle in a directed graph using DFS
+    private boolean cycle(ArrayList<ArrayList<Integer>> adj, int u, boolean[] visited, boolean[] globalVisited){
+        if(visited[u])      // If the current node is visited in the current DFS path, cycle detected
+            return true;
 
-        for( int i : adj.get(s) ){
-            if(!visited[i] && cycle(i, visited, currVisited, adj)){
-                return true;
-            }else if (visited[i] && currVisited[i]){
-                return true;
-            }
+        if(globalVisited[u]) // If the current node has been visited in a previous DFS call, no cycle detected
+            return false;
+
+        visited[u] = true;      // Mark the current node as visited in the current DFS path
+        globalVisited[u] = true;// Mark the current node as globally visited across all DFS calls
+
+        // Explore neighbors of the current node
+        for(int v : adj.get(u)){
+            if(cycle(adj, v, visited, globalVisited)) // Recursively check for cycle in neighbors
+                return true; // If cycle detected in neighbors, return true
         }
 
-        return currVisited[s] = false;
+        visited[u] = false; // Reset the visited status for the current node before backtracking
+        return false; // No cycle detected for the current node and its neighbors
     }
 }
