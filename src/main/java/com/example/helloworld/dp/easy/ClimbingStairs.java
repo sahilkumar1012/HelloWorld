@@ -2,6 +2,7 @@ package com.example.helloworld.dp.easy;
 
 /**
  * LeetCode 70. Climbing Stairs
+ *
  * Problem Link: https://leetcode.com/problems/climbing-stairs/
  * Code Harmony Video Link: https://youtu.be/q5-qjY_JF04
  *
@@ -76,4 +77,27 @@ public class ClimbingStairs {
 
         return dp[n];  // Return the result for 'n' steps
     }
+
+
+
+    /**
+     * Approach 3: Bottom-up Dynamic Programming without extra space
+     * Uses bottom-up dynamic programming without using any extra space.
+     *
+     * @param n Number of steps to reach the top
+     * @return Number of distinct ways to reach the top
+     */
+    public int climbStairsWithoutExtraSpace(int n) {
+        int a = 1;   // will be used to calculate value 2nd step onwards
+        int b = 1;   // total ways to reach first stair.
+
+        for (int i = 2; i <= n; i++) {
+            int temp = b;
+            b = a + b;
+            a = temp;
+        }
+
+        return b;
+    }
+
 }

@@ -6,6 +6,8 @@ import java.util.Set;
 /**
  * leetcode 1207. Unique Number of Occurrences
  *
+ * GitHub Link: https://github.com/sahilkumar1012/HelloWorld/blob/master/src/main/java/com/example/helloworld/hashtable/UniqueNumberofOccurrences.java
+ *
  * Given an array of integers arr, return true if the number of occurrences of each value in the array is unique or false otherwise.
  *
  *
