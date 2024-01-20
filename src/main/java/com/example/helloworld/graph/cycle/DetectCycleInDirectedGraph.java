@@ -5,8 +5,7 @@ import java.util.ArrayList;
 /**
  * @author sahil
  *
- * reference video for help : https://youtu.be/TL9oORCqHe8
- * # Detect cycle in a directed graph
+ * Detect cycle in a directed graph
  *
  * geeksforgeeks https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1#
  *
