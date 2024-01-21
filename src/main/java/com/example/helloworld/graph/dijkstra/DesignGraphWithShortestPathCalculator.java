@@ -70,6 +70,7 @@ class Graph {
         int n = adj.size();
         int[] costForNode = new int[n];
         Arrays.fill(costForNode, Integer.MAX_VALUE);
+
         costForNode[node1] = 0;
         pq.offer(new int[]{0, node1});
 
