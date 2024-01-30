@@ -96,4 +96,4 @@ public class EvaluateReversePolishNotation {
         return s.pop(); // Result of the evaluation is the final element in the stack
     }
 }
-}
+
