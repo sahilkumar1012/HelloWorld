@@ -67,4 +67,43 @@ public class DailyTemperatures {
 
         return ans;
     }
+
+    /**
+     * constant time solution, without taking any extra stack!
+     * @param temp
+     * @return
+     */
+    public int[] dailyTemperaturesWithoutSpace(int[] temp) {
+        // Get the length of the input array
+        int n = temp.length;
+
+        // Array to store the result, representing the number of days to the next higher temperature
+        int[] ans = new int[n];
+
+        // Iterate through the array from right to left
+        for (int i = n - 1; i >= 0; i--) {
+            // Initialize the index for comparison
+            int j = i + 1;
+
+            // Continue searching for the next higher temperature while within array bounds
+            while (j < n && temp[j] <= temp[i]) {
+                // If there is a previously calculated result at index j, jump ahead
+                if (ans[j] > 0) {
+                    j = j + ans[j];
+                } else {
+                    j = n;  // Break the loop if ans[j] is not positive
+                }
+            }
+
+            // Check if a higher temperature index was found within array bounds
+            if (j < n) {
+                // Calculate the number of days to wait for the next higher temperature
+                ans[i] = j - i;
+            }
+        }
+
+        // Return the array containing the result for each day
+        return ans;
+    }
+
 }
