@@ -1,7 +1,5 @@
 package com.example.helloworld.dp.arraydp;
 
-import java.util.Arrays;
-
 /**
  * leetcode 279. Perfect Squares
  * reference video : https://youtu.be/aZuQXkO0-XA
@@ -28,7 +26,7 @@ import java.util.Arrays;
  *
  * 1 <= n <= 104
  */
-public class PerfectSquares {
+public class PerfectSquaresBottomup {
     public int numSquares(int n) {
         int[] dp = new int[n+1];
         dp[0] = 0;
