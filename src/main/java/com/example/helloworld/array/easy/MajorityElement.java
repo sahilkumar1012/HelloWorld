@@ -3,6 +3,8 @@ package com.example.helloworld.array.easy;
 /**
  * leetcode 169. Majority Element
  *
+ * Code harmony solution video : https://youtu.be/Ix4AQqOKuKs
+ *
  * Given an array nums of size n, return the majority element.
  *
  * The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
@@ -34,12 +36,12 @@ public class MajorityElement {
      * did using moore voting algorithm, Using Moore’s Voting Algorithm
      */
     public int majorityElement(int[] nums) {
-        int cand = findCandidate(nums);
+        return findCandidate(nums);
 
-        if(isMajority(nums,cand))
-            return cand;
-
-        throw new IllegalArgumentException("tune bola tha majority element hamesha aega.");
+//        if(isMajority(nums,candidate))
+//            return cand;
+//
+//        throw new IllegalArgumentException("tune bola tha majority element hamesha aega.");
     }
 
     private boolean isMajority(int[] nums, int cand) {
@@ -52,7 +54,7 @@ public class MajorityElement {
 
     // 2 3 3 3 22222
     private int findCandidate(int[] nums) {
-        int maj_index = 0, count =1 ;           // cosidering the first element is majority
+        int maj_index = 0, count = 1 ;           // cosidering the first element is majority
         for(int i=1; i<nums.length; ++i){
             if( nums[maj_index] == nums[i] )
                 count++;
