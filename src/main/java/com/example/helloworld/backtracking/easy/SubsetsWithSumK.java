@@ -23,7 +23,7 @@ public class SubsetsWithSumK {
             return new ArrayList<>();
 
         List<List<Integer>> res = new ArrayList<>();
-        res.add(new ArrayList<>());
+//        res.add(new ArrayList<>());
 
         sol(nums, res, new ArrayList<Integer>(), 0, k);
         return res;
