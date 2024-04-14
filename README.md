@@ -1,2 +1,2 @@
 # HelloWorld
-To Practice Problem Solving using Data Structures and Algorithms.
+Problem Solving using Data Structures and Algorithms.
