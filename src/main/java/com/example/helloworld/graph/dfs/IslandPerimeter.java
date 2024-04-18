@@ -37,36 +37,60 @@ package com.example.helloworld.graph.dfs;
  */
 public class IslandPerimeter {
 
-    int m,n;
+    // Input grid representing the map
+    int[][] grid;
 
+    // Directions for the DFS traversal (right, down, left, up)
+    int[][] dir = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+
+    // Dimensions of the grid and perimeter count
+    int m, n, per;
+
+    /**
+     * Calculates the perimeter of the island in the given grid.
+     *
+     * @param grid The 2D array representing the map with land and water cells
+     * @return The perimeter of the island
+     */
     public int islandPerimeter(int[][] grid) {
         m = grid.length;
         n = grid[0].length;
+        per = 0;
+        this.grid = grid;
 
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-
-                if(grid[i][j] == 1){
-                    return dfs(grid, i, j); // we only have one island
+        // Iterate through the grid to find the starting point of the island
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1) {
+                    // Once a land cell is found, initiate DFS from that point
+                    dfs(i, j);
+                    return per; // Perimeter is calculated, return the result
                 }
             }
         }
-        return -1;
+        return 0; // No island found, return 0
     }
 
-    private int dfs(int[][] grid, int i, int j){
-        if(i<0 || j<0 || i>=m || j>=n || grid[i][j] == 0)       // at the boundry
-            return 1;
-        if( grid[i][j] == -1)       // visited
-            return 0;
+    /**
+     * Performs DFS traversal to explore the island cells and calculate perimeter.
+     *
+     * @param i Row index of the current cell
+     * @param j Column index of the current cell
+     */
+    private void dfs(int i, int j) {
+        // If the current cell is outside the grid or is water, increase perimeter and return
+        if (i == m || j == n || i < 0 || j < 0 || grid[i][j] == 0) {
+            per++;
+            return;
+        }
+        if (grid[i][j] == -1) return; // Cell already visited
 
-        int ans = 0;
+        // Mark the current cell as visited
         grid[i][j] = -1;
 
-        int[][] dir = {{1,0},{-1,0},{0,1},{0,-1}};
-        for(int[] d: dir)
-            ans += dfs(grid, i+d[0], j+d[1]);
-
-        return ans;
+        // Explore neighbors in all four directions
+        for (int[] d : dir) {
+            dfs(i + d[0], j + d[1]);
+        }
     }
 }
