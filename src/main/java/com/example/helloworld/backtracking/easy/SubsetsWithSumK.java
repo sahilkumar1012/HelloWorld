@@ -21,7 +21,6 @@ public class SubsetsWithSumK {
     public List<List<Integer>> subsetsWithSumK(int[] nums, int k) {
         if(k==0)
             return new ArrayList<>();
-
         List<List<Integer>> res = new ArrayList<>();
 //        res.add(new ArrayList<>());
 

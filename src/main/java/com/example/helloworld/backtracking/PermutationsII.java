@@ -7,7 +7,8 @@ import java.util.List;
  * leetcode 47. Permutations II
  * asked in Adobe
  *
- * Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order.
+ * Given a collection of numbers, nums, that might contain duplicates, return all possible unique
+ * permutations in any order.
  *
  *
  *
