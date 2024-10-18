@@ -30,32 +30,32 @@ import java.util.List;
  */
 public class SubSets {
 
-        // here we have only positive numbers
-        public List<List<Integer>> subsets(int[] nums) {
-            List<List<Integer>> res = new ArrayList<>();
-            res.add(new ArrayList<>());
+    // here we have only positive numbers
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        res.add(new ArrayList<>());
 
-            sol(nums, res, new ArrayList<>(), 0);
-            return res;
-        }
+        sol(nums, res, new ArrayList<>(), 0);
+        return res;
+    }
 
-        private void sol(int[] nums, List<List<Integer>> res, List<Integer> temp, int idx){
-            if(idx == nums.length)
-                return;
+    private void sol(int[] nums, List<List<Integer>> res, List<Integer> temp, int idx){
+        if(idx == nums.length)
+            return;
 
-            for(int i=idx; i<nums.length; ++i){
-                temp.add(nums[i]);
-                res.add( new ArrayList<>(temp) );
-                sol(nums, res, temp, i+1);
-                temp.remove(temp.size()-1);
-            }
-        }
-
-        public List<List<Integer>> subsetsWithSumK(int[] nums) {
-            List<List<Integer>> res = new ArrayList<>();
-            res.add(new ArrayList<>());
-
-            sol(nums, res, new ArrayList<>(), 0);
-            return res;
+        for(int i=idx; i<nums.length; ++i){
+            temp.add(nums[i]);
+            res.add( new ArrayList<>(temp) );
+            sol(nums, res, temp, i+1);
+            temp.remove(temp.size()-1);
         }
     }
+
+    public List<List<Integer>> subsetsWithSumK(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        res.add(new ArrayList<>());
+
+        sol(nums, res, new ArrayList<>(), 0);
+        return res;
+    }
+}
