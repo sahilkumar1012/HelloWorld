@@ -2,6 +2,7 @@ package com.example.helloworld.dp.easy;
 
 /**
  * leetcode 53. Maximum Subarray
+ * code harmony video : https://youtu.be/BDe0bMrDMEs
  *
  Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
@@ -36,7 +37,7 @@ package com.example.helloworld.dp.easy;
  */
 public class MaximumSubarray {
         /**
-         * reference to understand Kadane's algo : https://youtu.be/VMtyGnNcdPw
+         * reference to understand Kadane's algo : https://youtu.be/BDe0bMrDMEs
          * Kadane's algo
         */
         public int maxSubArray(int[] nums) {
