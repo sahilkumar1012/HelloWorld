@@ -2,8 +2,8 @@ package com.example.helloworld.array.easy;
 
 /**
  * leetcode 169. Majority Element
- *
- * Code harmony solution video : https://youtu.be/Ix4AQqOKuKs
+ * Code Harmony Video : https://youtu.be/Ju8-_9nvH6w
+ * Code harmony solution video (old) : https://youtu.be/Ix4AQqOKuKs
  *
  * Given an array nums of size n, return the majority element.
  *
@@ -53,6 +53,12 @@ public class MajorityElement {
     }
 
     // 2 3 3 3 22222
+
+    /**
+     * Boyer-Moore Voting Algorithm
+     * @param nums
+     * @return
+     */
     private int findCandidate(int[] nums) {
         int maj_index = 0, count = 1 ;           // cosidering the first element is majority
         for(int i=1; i<nums.length; ++i){
