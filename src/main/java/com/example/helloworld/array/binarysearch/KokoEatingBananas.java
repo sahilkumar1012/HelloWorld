@@ -29,32 +29,34 @@ package com.example.helloworld.array.binarysearch;
  */
 public class KokoEatingBananas {
     public int minEatingSpeed(int[] piles, int h) {
-        int max = 0;
-        for(int i : piles)
-            max = Math.max(max, i );
-
+        int ans = -1;
         // binary search on answer space
         int low = 1;
-        int high = max;
-        while(low < high){
+        int high = 1000000000;
+        while(low <= high){
             int mid = low + (high-low)/2;
             if( satify(piles, mid, h) ){
-                high = mid;
+                ans = mid;
+                high = mid -1;
             }else{
                 low = mid + 1;
             }
         }
-
-        return low;
+        return ans;
     }
+    /**
 
+     15 + 5 - 1 / 5 =
+     */
     // capicity  = mid per hour is sufficient or not?
     private boolean satify(int[] piles, int mid, int h){
-        int k = 0;
+        int hour = 0;
         for(int pile : piles ){
-            int t = (int) Math.ceil((double)pile/(double)mid );
-            k += t;
+            int t = (pile + mid - 1) / mid; // in case of 1.723 hours we'll take 2
+            hour += t;
+            if(hour > h) return false; // Early exit if hours exceed h
         }
-        return k<=h;
+        return true;
     }
+
 }
