@@ -23,8 +23,6 @@ Start with easy problems to build a strong foundation in array manipulation and 
 
 --- 
 
-## -----------------------------  EOF  ---------------------------------
-
 ## 2. Binary Search
 Introduce binary search once students are comfortable with basic array operations. These problems will enhance their understanding of how to apply binary search in different scenarios.
 
@@ -39,6 +37,9 @@ Introduce binary search once students are comfortable with basic array operation
 
 - **[Minimum Time to Complete Trips](https://leetcode.com/problems/minimum-time-to-complete-trips/)**  
   (Concept: Binary Search, Optimization)
+
+
+## -----------------------------  EOF  ---------------------------------
 
 ## 3. Stack Operations
 Understanding stacks is important for managing recursive problems and parsing structures.
