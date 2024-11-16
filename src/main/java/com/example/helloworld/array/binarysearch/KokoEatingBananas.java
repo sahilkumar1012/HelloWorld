@@ -2,6 +2,7 @@ package com.example.helloworld.array.binarysearch;
 
 /**
  * leetcode 875. Koko Eating Bananas
+ * Code harmony video explanation : https://youtu.be/sGAGbvw5DJw
  *
  *Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
  *
@@ -52,7 +53,7 @@ public class KokoEatingBananas {
     private boolean satify(int[] piles, int mid, int h){
         int hour = 0;
         for(int pile : piles ){
-            int t = (pile + mid - 1) / mid; // in case of 1.723 hours we'll take 2
+            int t = (pile + mid - 1) / mid; // in case of 1.723 hours we'll take 2 , ceil
             hour += t;
             if(hour > h) return false; // Early exit if hours exceed h
         }
