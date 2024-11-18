@@ -39,8 +39,6 @@ Introduce binary search once students are comfortable with basic array operation
   (Concept: Binary Search, Optimization)
 
 
-## -----------------------------  EOF  ---------------------------------
-
 ## 3. Stack Operations
 Understanding stacks is important for managing recursive problems and parsing structures.
 
@@ -48,8 +46,8 @@ Understanding stacks is important for managing recursive problems and parsing st
   (Concept: Stack, Simulation)
 
 ## 4. Sliding Window
-Once binary search is well-understood, introduce sliding window techniques for optimal subarray or substring searching.
-
+Once binary search is well-understood, understand sliding window techniques for optimal subarray or substring searching.
+   
 - **[Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)**  
   (Concept: Sliding Window)
 
@@ -61,6 +59,9 @@ Once binary search is well-understood, introduce sliding window techniques for o
 
 - **[Minimum Swaps to Group All 1’s Together II](https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii/)**  
   (Concept: Sliding Window, Optimization)
+
+## -----------------------------  EOF  ---------------------------------
+
 
 ## 5. Prefix Sums
 These problems will help students understand how to manipulate arrays efficiently using prefix sums.
