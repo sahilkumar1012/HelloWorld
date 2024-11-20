@@ -33,40 +33,64 @@ package com.example.helloworld.array.slidingwindow;
  * 0 <= k <= s.length
  */
 public class TakeKofEachCharacterFromLeftandRight {
-    int k;
+    int k; // Required count of each character
+
+    /**
+     * Finds the minimum number of characters to take from the left or right to satisfy the condition.
+     *
+     * @param s The input string consisting of 'a', 'b', and 'c'.
+     * @param k The minimum count of each character required.
+     * @return The minimum number of minutes needed, or -1 if it's not possible.
+     */
     public int takeCharacters(String s, int k) {
-        this.k = k;
-        int[] count = new int[3];
-        for(char ch : s.toCharArray()){     // store actual count of a,b,c
-            count[ch-'a']++;
+        this.k = k; // Store `k` for use in validation
+        int[] count = new int[3]; // Array to track counts of 'a', 'b', and 'c'
+
+        // Calculate the total count of each character in the string
+        for (char ch : s.toCharArray()) {
+            count[ch - 'a']++; // Increment count for the respective character
         }
-        if(!valid(count)) return -1;
 
-        // I definitely have answer now.
+        // Check if it's possible to have at least `k` occurrences of each character
+        if (!valid(count)) return -1;
 
-        int begin = 0, end = 0;
-        int max = -1; // max len invalid window
-        while(end < s.length()){
+        // If we reach here, it is possible to satisfy the condition.
+        // Use a sliding window approach to find the maximum length of an "invalid" substring.
+
+        int begin = 0, end = 0; // Sliding window pointers
+        int max = -1; // Maximum length of a valid window (i.e., invalid substring)
+
+        while (end < s.length()) {
+            // Expand the window by including the character at `end`
             char ch = s.charAt(end);
-            count[ch-'a']--;
+            count[ch - 'a']--; // Decrement the count of the character in the window
 
-            // shrink by discarding invalid letters in this window.
-            while(!valid(count) && begin<=end){
-                count[s.charAt(begin)-'a']++;
-                begin++;
+            // Shrink the window from the left until the window becomes valid again
+            while (!valid(count) && begin <= end) {
+                count[s.charAt(begin) - 'a']++; // Restore the count for the character being removed
+                begin++; // Move the left pointer forward
             }
 
-            max = Math.max(max, end-begin+1 );
-            end++;
+            // Update the maximum length of the valid window
+            max = Math.max(max, end - begin + 1);
+            end++; // Move the right pointer forward
         }
+
+        // The result is the total length of the string minus the maximum valid window size
         return s.length() - max;
     }
 
-    private boolean valid(int[] count){
-        for(int i : count){     // negative case.
-            if(i < k) return false;
+    /**
+     * Checks if the current counts of characters meet the requirement of having at least `k` of each.
+     *
+     * @param count Array containing counts of 'a', 'b', and 'c'.
+     * @return True if the counts are valid, otherwise false.
+     */
+    private boolean valid(int[] count) {
+        for (int i : count) { // Check each character's count
+            if (i < k) return false; // If any count is less than `k`, return false
         }
-        return true;
+        return true; // All counts are valid
     }
-
 }
+
