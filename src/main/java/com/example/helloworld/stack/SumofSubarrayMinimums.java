@@ -55,51 +55,40 @@ public class SumofSubarrayMinimums {
         return sum;
     }
 
-    /**
-     * O(N) time solution , O(N) Space using Monotonic Stack
-     * @param arr
-     * @return
-     */
-    public int sumOfMinSubarrays(int[] arr) {
-        int n = arr.length;
-        long result = 0;
+    public int sumSubarrayMins(int[] arr) {
         int MOD = 1000000007;
 
-        // Stack to maintain the indices of elements in a monotonically increasing order.
         Stack<Integer> stack = new Stack<>();
+        long sumOfMinimums = 0;
 
-        // Arrays to store the left and right boundaries of the minimum element for each index.
-        int[] left = new int[n];
-        int[] right = new int[n];
+        // building monotonically increasing stack
+        for (int i = 0; i <= arr.length; i++) {
 
-        // Calculate the left boundaries for each element.
-        for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && arr[i] < arr[stack.peek()]) {
-                stack.pop();
+            // when i reaches the array length, it is an indication that
+            // all the elements have been processed, and the remaining
+            // elements in the stack should now be popped out.
+
+            while (!stack.empty() && (i == arr.length || arr[stack.peek()] >= arr[i])) {
+
+                // Notice the sign ">=", This ensures that no contribution
+                // is counted twice. rightBoundary takes equal or smaller 
+                // elements into account while leftBoundary takes only the
+                // strictly smaller elements into account
+
+                int mid = stack.pop();
+                int leftBoundary = stack.empty() ? -1 : stack.peek();
+                int rightBoundary = i;
+
+                // count of subarrays where mid is the minimum element
+                long count = (mid - leftBoundary) * (rightBoundary - mid) % MOD;
+
+                sumOfMinimums += (count * arr[mid]) % MOD;
+                sumOfMinimums %= MOD;
             }
-            left[i] = stack.isEmpty() ? -1 : stack.peek();
             stack.push(i);
         }
 
-        // Clear the stack for reusing it to calculate the right boundaries.
-        stack.clear();
-
-        // Calculate the right boundaries for each element.
-        for (int i = n - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && arr[i] < arr[stack.peek()]) {
-                stack.pop();
-            }
-            right[i] = stack.isEmpty() ? n : stack.peek();
-            stack.push(i);
-        }
-
-        // Calculate the contribution of each element to the final result.
-        for (int i = 0; i < n; i++) {
-            result = (result + (long) arr[i] * (i - left[i]) * (right[i] - i)) % MOD;
-        }
-
-        // Return the result after taking modulo.
-        return (int) result;
+        return (int) (sumOfMinimums);
     }
 
 
