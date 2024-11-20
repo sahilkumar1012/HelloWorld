@@ -2,7 +2,7 @@ package com.example.helloworld.array.slidingwindow;
 
 /**
  * leetcode 2516. Take K of Each Character From Left and Right
- * Code harmony video explanation :
+ * Code harmony video explanation : https://youtu.be/5I5HJMYscgg
  *
  * You are given a string s consisting of the characters 'a', 'b', and 'c' and a non-negative integer k. Each minute, you may take either the leftmost character of s, or the rightmost character of s.
  *
