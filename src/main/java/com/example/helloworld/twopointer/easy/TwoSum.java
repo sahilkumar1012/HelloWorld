@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * leetcode 1. Two Sum
+ * leetcode 1. Two Sum , Most frequently asked coding interview question
+ *
+ * Code Harmony Video Explanation: XXXXXXXXXXXXXXXXXXXXXXXXXXXX
  *
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
  *
@@ -40,13 +42,33 @@ import java.util.Map;
  * Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
  */
 public class TwoSum {
+    /**
+     * Solves the Two Sum problem using a HashMap to achieve O(n) time complexity.
+     *
+     * @param nums The input array of integers.
+     * @param target The target sum we want to find.
+     * @return An array of two integers representing the indices of the numbers that add up to `target`.
+     */
     public int[] twoSum(int[] nums, int target) {
+        // Create a HashMap to store the elements and their indices
         Map<Integer, Integer> map = new HashMap<>();
-        for(int i=0; i<nums.length; i++){
-            if(map.containsKey(target-nums[i])) return new int[]{map.get(target - nums[i]), i};
 
-            map.put(nums[i],i);
+        // Iterate through the array
+        for (int i = 0; i < nums.length; i++) {
+            // Calculate the complement of the current number to reach the target
+            int complement = target - nums[i];
+
+            // Check if the complement exists in the map
+            if (map.containsKey(complement)) {
+                // If found, return the indices of the complement and the current number
+                return new int[] { map.get(complement), i };
+            }
+
+            // Otherwise, store the current number and its index in the map
+            map.put(nums[i], i);
         }
+
+        // Return null if no solution is found (though the problem guarantees a solution exists)
         return null;
     }
 }
