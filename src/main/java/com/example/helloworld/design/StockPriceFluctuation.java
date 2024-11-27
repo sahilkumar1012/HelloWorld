@@ -53,7 +53,6 @@ import java.util.PriorityQueue;
  * At most 105 calls will be made in total to update, current, maximum, and minimum.
  * current, maximum, and minimum will be called only after update has been called at least once
  */
-//public class StockPriceFluctuation {
 class StockPrice {
     private int latestTime;
     // Store price of each stock at each timestamp.
