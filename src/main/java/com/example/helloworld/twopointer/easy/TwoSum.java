@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * leetcode 1. Two Sum , Most frequently asked coding interview question
  *
- * Code Harmony Video Explanation: XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ * Code Harmony Video Explanation: https://youtu.be/l8DxsxO9q7g
  *
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
  *
