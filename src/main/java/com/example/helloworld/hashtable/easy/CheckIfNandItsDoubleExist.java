@@ -8,6 +8,8 @@ import java.util.Set;
  *
  * Code Harmony Video Explanation : https://youtu.be/sFbEN-zrFiE
  *
+ * My leetcode solution : https://leetcode.com/problems/check-if-n-and-its-double-exist/solutions/6098504/easy-intuition-brute-force-to-optimized-using-hashing-detailed-video-explanation
+ *
  * Given an array arr of integers, check if there exist two indices i and j such that :
  *
  * i != j
