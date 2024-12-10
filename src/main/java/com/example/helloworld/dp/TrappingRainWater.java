@@ -3,6 +3,7 @@ package com.example.helloworld.dp;
 
 /**
  * leetcode 42. Trapping Rain Water
+ * code harmony video explanation : https://youtu.be/qsxiV7DGzEo
  *
  * Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
  *
