@@ -4,6 +4,10 @@ package com.example.helloworld.bitmanipulation;
  * leetcode 191. Number of 1 Bits
  * https://leetcode.com/problems/number-of-1-bits/
  *
+ * code harmony video explanation : https://youtu.be/uhJ1zWblYF4
+ *
+ * my leetcode solution : https://leetcode.com/problems/number-of-1-bits/solutions/6293722/beginner-friendly-o-number-of-set-bits-d-vlyj
+ *
  * Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
  *
  * Note:

@@ -1,3 +1,9 @@
+Solution : ek side ke bank ke base pe sort karlo and 2nd wale ke LIS length return karlo.
+
+Solution reference video : https://youtu.be/o1h3aoeSTOU
+
+Problem Statement :
+
 Maximum Non-overlapping Bridges
 
 1. You are given a number n, representing the number of bridges on a river.
@@ -29,7 +35,5 @@ Sample Input
 Sample Output
 7
 
+---------------
 
-Solution : ek side ke bank ke base pe sort karlo and 2nd wale ke LIS length return karlo.
-
-Solution reference video : https://youtu.be/o1h3aoeSTOU
