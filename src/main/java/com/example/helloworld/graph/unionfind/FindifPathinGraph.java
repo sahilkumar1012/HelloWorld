@@ -54,6 +54,7 @@ public class FindifPathinGraph {
 
     /**
      * Union Find template
+     * DSU ( Disjoint Set Union )
      * @author sahil
      */
     static class UnionFind {
