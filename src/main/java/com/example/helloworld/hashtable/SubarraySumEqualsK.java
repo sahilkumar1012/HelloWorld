@@ -6,6 +6,8 @@ import java.util.Map;
 /**
  * leetcode 560. Subarray Sum Equals K
  *
+ * code harmony reference video : https://youtu.be/OQ4oyd3CV5I
+ *
  * Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.
  *
  *
@@ -27,7 +29,6 @@ import java.util.Map;
  * -107 <= k <= 107
  */
 public class SubarraySumEqualsK {
-    // reference video : https://youtu.be/HbbYPQc-Oo4
 
     public int subarraySum(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();

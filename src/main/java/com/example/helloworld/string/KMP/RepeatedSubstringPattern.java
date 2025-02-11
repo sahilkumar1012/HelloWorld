@@ -30,7 +30,7 @@ package com.example.helloworld.string.KMP;
  */
 public class RepeatedSubstringPattern {
     public boolean repeatedSubstringPattern(String s) {
-        int[] lps= new KMP().computeTemporaryArray(s.toCharArray());
+        int[] lps= new KMP().prepareLPS(s.toCharArray());
         int n=s.length();
         // System.out.println(lps);
         /**

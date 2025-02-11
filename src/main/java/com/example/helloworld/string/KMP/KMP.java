@@ -18,14 +18,14 @@ import java.util.Arrays;
 public class KMP {
 
     /**
-     * Slow method of pattern matching
-     *
-     * O(m*n)
+     * Naive String Matching Algorithm
+     * ( not efficient for long and repetitive patterns , too much redundant matchings )
+     * Time - O(m*n)
      */
     public boolean hasSubstring(char[] text, char[] pattern){
-        int i=0;
-        int j=0;
-        int k = 0;
+        int i=0;        // pointer for text
+        int j=0;        // pointer for pattern
+        int k = 0;      // start from k this time.
         while(i < text.length && j < pattern.length){
             if(text[i] == pattern[j]){
                 i++;
@@ -36,27 +36,25 @@ public class KMP {
                 i = k;
             }
         }
-        if(j == pattern.length){
-            return true;
-        }
-        return false;
+        return j == pattern.length;
     }
 
     /**
      * Compute temporary array to maintain size of suffix which is same as prefix
-     * Time/space complexity is O(size of pattern) O(m+n)
+     * Time complexity to prepare LPS is O(m)
+     * m is size of pattern
      */
-    public int[] computeTemporaryArray(char[] pattern){
+    public int[] prepareLPS(char[] pattern){
         int [] lps = new int[pattern.length];
-        int index =0;
+        int len =0;
         for(int i=1; i < pattern.length;){
-            if(pattern[i] == pattern[index]){
-                lps[i] = index + 1;
-                index++;
+            if(pattern[i] == pattern[len]){
+                len++;
+                lps[i] = len;
                 i++;
             }else{
-                if(index != 0){
-                    index = lps[index-1];
+                if(len > 0){
+                    len = lps[len-1];
                 }else{
                     lps[i] =0;
                     i++;
@@ -68,10 +66,11 @@ public class KMP {
 
     /**
      * KMP algorithm of pattern matching.
+     * (using LPS array)
      */
     public boolean KMP(char []text, char []pattern){
 
-        int lps[] = computeTemporaryArray(pattern);
+        int[] lps = prepareLPS(pattern);
         int i=0;
         int j=0;
         while(i < text.length && j < pattern.length){
@@ -91,17 +90,15 @@ public class KMP {
 
     public static void main(String args[]){
 
-//        String str = "abcxabcdabcdabcy";
-////        String subString = "abcdabcy";
-//        String str = "hello";
-//        String subString = "ll";
+        String str = "abcxabcdabcdabcy";
+        String subString = "abcdabcy";
         KMP ss = new KMP();
-//        boolean result = ss.KMP(str.toCharArray(), subString.toCharArray());
-//        System.out.print(result);
+        boolean result = ss.KMP(str.toCharArray(), subString.toCharArray());
+        System.out.print(result);
 
 //  create a test to find lps of     abcabcabcabc
-        int [] lps = ss.computeTemporaryArray("abcabcabcabc".toCharArray());
-        System.out.println(Arrays.toString(lps));;
+//        int [] lps = ss.prepareLPS("abcabcabcabc".toCharArray());
+//        System.out.println(Arrays.toString(lps));;
 
     }
 }

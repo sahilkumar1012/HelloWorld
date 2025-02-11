@@ -1,0 +1,44 @@
+
+// string matching
+
+text = "abcabcabc"
+pattern = "cab"
+
+/**
+1. concatenation, substring, split, reversing, comparing
+2. reverse a string
+3. valid anagrams
+    (An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once.)
+4. is palindrome ?
+5. longest substring without repeated characters.
+6.
+*/
+
+int sol(string text, string pattern){
+    // start matching form every i
+    // if matching len == pattern.length
+        // count++;
+    // return count;
+
+    int i = 0;
+    int j = 0;
+    int ans = 0;
+    for(int i = 0;i<text.size();i++)
+    {
+        // i se start hone wali substring match karni hai
+        int k = i, j;       // 2,0
+        for(j=0; j<pattern.size(); j++){
+            if( k<text.size() && text[k] != pattern[j]){
+                break;
+            }
+            k++;
+        }
+        if(j == pattern.size()) ans++;
+    }
+    return ans;
+}
+
+int main(){
+    int ans = sol("abcabcabc", "cab");
+    cout<<ans<<endl;
+}
