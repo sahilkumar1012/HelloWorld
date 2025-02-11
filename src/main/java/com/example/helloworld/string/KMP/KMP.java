@@ -18,45 +18,22 @@ import java.util.Arrays;
 public class KMP {
 
     /**
-     * Naive String Matching Algorithm
-     * ( not efficient for long and repetitive patterns , too much redundant matchings )
-     * Time - O(m*n)
+     * Compute LPS array to maintain the size of the suffix which is the same as the prefix.
+     * Time Complexity: O(m), where m is the length of the pattern.
      */
-    public boolean hasSubstring(char[] text, char[] pattern){
-        int i=0;        // pointer for text
-        int j=0;        // pointer for pattern
-        int k = 0;      // start from k this time.
-        while(i < text.length && j < pattern.length){
-            if(text[i] == pattern[j]){
-                i++;
-                j++;
-            }else{
-                j=0;
-                k++;
-                i = k;
-            }
-        }
-        return j == pattern.length;
-    }
-
-    /**
-     * Compute temporary array to maintain size of suffix which is same as prefix
-     * Time complexity to prepare LPS is O(m)
-     * m is size of pattern
-     */
-    public int[] prepareLPS(char[] pattern){
-        int [] lps = new int[pattern.length];
-        int len =0;
-        for(int i=1; i < pattern.length;){
-            if(pattern[i] == pattern[len]){
+    public int[] prepareLPS(char[] pattern) {
+        int[] lps = new int[pattern.length];
+        int len = 0;
+        for (int i = 1; i < pattern.length; ) {
+            if (pattern[i] == pattern[len]) {
                 len++;
                 lps[i] = len;
                 i++;
-            }else{
-                if(len > 0){
-                    len = lps[len-1];
-                }else{
-                    lps[i] =0;
+            } else {
+                if (len > 0) {
+                    len = lps[len - 1];
+                } else {
+                    lps[i] = 0;
                     i++;
                 }
             }
@@ -65,40 +42,41 @@ public class KMP {
     }
 
     /**
-     * KMP algorithm of pattern matching.
-     * (using LPS array)
+     * KMP algorithm to find the first occurrence index of the pattern in the text.
+     * Returns the index of the first occurrence, or -1 if not found.
      */
-    public boolean KMP(char []text, char []pattern){
-
+    public int KMP(char[] text, char[] pattern) {
         int[] lps = prepareLPS(pattern);
-        int i=0;
-        int j=0;
-        while(i < text.length && j < pattern.length){
-            if(text[i] == pattern[j]){
+        int i = 0; // Pointer for text
+        int j = 0; // Pointer for pattern
+
+        while (i < text.length) {
+            if (text[i] == pattern[j]) {
                 i++;
                 j++;
-            }else{
-                if(j!=0){
-                    j = lps[j-1];
-                }else{
+                if (j == pattern.length) {
+                    return i - j; // Found match, return start index
+                }
+            } else {
+                if (j != 0) {
+                    j = lps[j - 1];
+                } else {
                     i++;
                 }
             }
         }
-        return j == pattern.length;
+        return -1; // No match found
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
+        KMP kmp = new KMP();
+        String text = "abcxabcdabcdabcy";
+        String pattern = "abcdabcy";
+        int index = kmp.KMP(text.toCharArray(), pattern.toCharArray());
+        System.out.println("Pattern found at index: " + index); // Expected output: 7
 
-        String str = "abcxabcdabcdabcy";
-        String subString = "abcdabcy";
-        KMP ss = new KMP();
-        boolean result = ss.KMP(str.toCharArray(), subString.toCharArray());
-        System.out.print(result);
-
-//  create a test to find lps of     abcabcabcabc
-//        int [] lps = ss.prepareLPS("abcabcabcabc".toCharArray());
-//        System.out.println(Arrays.toString(lps));;
-
+        // Test LPS computation
+        int[] lps = kmp.prepareLPS("abcabcabcabc".toCharArray());
+        System.out.println("LPS Array: " + java.util.Arrays.toString(lps)); // Expected LPS output
     }
 }
