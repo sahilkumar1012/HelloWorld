@@ -30,6 +30,7 @@ package com.example.helloworld.array.binarysearch;
 public class ArrangingCoins {
 
     public int arrangeCoins(int n) {
+        // binary search on answer space
         long l = 0, r = n;
 
         while(l<=r){

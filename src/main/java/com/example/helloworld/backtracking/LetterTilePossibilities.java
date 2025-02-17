@@ -4,62 +4,67 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 1079. Letter Tile Possibilities
- * https://leetcode.com/problems/letter-tile-possibilities/
- * Solution of the above problem.
- * If you don't get this, take reference from Tushar roy's video
- * https://www.youtube.com/watch?v=xTNFs5KRV_g
+ * 1079. Letter Tile Possibilities , Asked in Google, Amazon
+ *
+ * code harmony video explanation : https://youtu.be/-tvgS6dLgFE
+ *
+ * my leetcode solution : https://leetcode.com/problems/letter-tile-possibilities/solutions/6432772/easy-to-understand-permutations-backtrac-5edx
+ *
+ *
+ * You have n  tiles, where each tile has one letter tiles[i] printed on it.
+ *
+ * Return the number of possible non-empty sequences of letters you can make using the letters printed on those tiles.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: tiles = "AAB"
+ * Output: 8
+ * Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
+ * Example 2:
+ *
+ * Input: tiles = "AAABBC"
+ * Output: 188
+ * Example 3:
+ *
+ * Input: tiles = "V"
+ * Output: 1
+ *
+ *
+ * Constraints:
+ *
+ * 1 <= tiles.length <= 7
+ * tiles consists of uppercase English letters.
+ *
  *
  */
 public class LetterTilePossibilities {
-    private final char firstChar = 'A';
+    int ans;  // Global variable to store the count of valid sequences
 
-    /**
-     * call helper function with frequency array to get all the subset's permutations of given string..
-     * @param s input string with same case characters
-     * @return list of all the words which can be formed with string letter combinations
-     */
-    public List<String> getStringSubsetsPermutations(String s){ // string of same case english letters
-        int[] freq = new int[26];
-        List<String> res = new ArrayList<>();
+    public int numTilePossibilities(String tiles) {
+        int[] hash = new int[26];  // Frequency array to store the count of each letter (A-Z)
 
-        for(char ch : s.toCharArray())
-            freq[ch-firstChar]++;
+        // Count the occurrences of each character in the given tiles string
+        for (char ch : tiles.toCharArray())
+            hash[ch - 'A']++;
 
-        helper(freq,res,0,new char[s.length()]);
-        return res;
+        ans = 0; // Initialize the answer count
+        sol(hash); // Start the recursive function
+        return ans; // Return the final count of possible sequences
     }
 
-    /**
-    @param word will store temporary word and at every moment we'll add this into our result array
-     */
-    private void helper(int[] freq, List<String> res, int idx, char[] word) {
-        if (idx == word.length)
-            return;
+    private void sol(int[] hash) {
+        // Iterate through all 26 possible letters
+        for (int i = 0; i < 26; i++) {
+            if (hash[i] == 0) continue; // Skip letters that are not available
 
-        for(int i=0; i<26; ++i){
-            if(freq[i]==0) continue;
+            ans++; // Count the current sequence
 
-            word[idx] = (char)(firstChar+i);
-            freq[i]--;
-            res.add(getValue(word,idx));
-            helper(freq, res, idx+1, word);
-            freq[i]++;
+            hash[i]--; // Use one occurrence of the current letter
+            sol(hash); // Recur to generate further sequences
+            hash[i]++; // Backtrack: Restore the count of the letter
         }
-    }
-
-    /**
-     * create word from temp char array till idx index.
-     * @param temp temp array which was used to store word
-     * @param idx till what index we need to form string word from temp array
-     * @return word.
-     */
-    private String getValue(char[] temp, int idx) {
-        StringBuilder sb = new StringBuilder();
-        for(int i=0; i<=idx; ++i){
-            sb.append(temp[i]);
-        }
-        return sb.toString();
     }
 
 }

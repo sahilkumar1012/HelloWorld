@@ -35,6 +35,7 @@ public class RepeatedSubstringPattern {
         // System.out.println(lps);
         /**
          for a pattern like : abcabcabcabc
+
          our lps should be like this : [0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
          */
         return (lps[n-1]>0 && lps[n-1]%(n-lps[n-1])==0);

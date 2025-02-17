@@ -50,7 +50,7 @@ public class SumofAbsoluteDifferencesinSortedArray {
     }
 
 
-    // linear time solution | Accepted.
+    // Linear time solution | Accepted.
     public int[] getSumAbsoluteDifferences(int[] nums) {
         int n = nums.length;
         int[] prefix = new int[n];
