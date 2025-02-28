@@ -1,4 +1,4 @@
-package com.example.helloworld.dp;
+package com.example.helloworld.dp.easy;
 
 /**
  * leetCode 1143. Longest Common Subsequence

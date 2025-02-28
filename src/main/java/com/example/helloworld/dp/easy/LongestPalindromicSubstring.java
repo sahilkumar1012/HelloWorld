@@ -2,7 +2,6 @@ package com.example.helloworld.dp.easy;
 
 /**
  * leetcode 5. Longest Palindromic Substring | Dynamic programming!
- * reference video solution : https://youtu.be/WpYHNHofwjc
  *
  * Given a string s, return the longest palindromic substring in s.
  *

@@ -75,7 +75,7 @@ public class RemoveSubFoldersfromtheFilesystem {
         List<String> roots = new ArrayList<>();
 
         // Sort folders by length to ensure shorter folders (potential roots) come first
-        Arrays.sort(folder, (a, b) -> a.length() - b.length());
+        Arrays.sort(folder, Comparator.comparingInt(String::length));
 
         // Insert each folder into the trie; if it's not a subfolder, add it to the roots list
         for (String s : folder) {
