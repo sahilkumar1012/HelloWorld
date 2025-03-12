@@ -3,7 +3,11 @@ package com.example.helloworld.slidingwindow;
 import java.util.Arrays;
 
 /**
- * leetcode 1838. Frequency of the Most Frequent Element
+ * leetcode 1838. Frequency of the Most Frequent Element , Meta
+ *
+ * code harmony video explanation : https://youtu.be/ddB7V8HU6cE
+ *
+ * my leetcode solution :
  *
  *
  * The frequency of an element is the number of times it occurs in an array.

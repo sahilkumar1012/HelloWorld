@@ -16,6 +16,15 @@ class LinkedListAssignment1 {
     }
 
     /**
+     * insert a new node after a specific value.
+     * @param val   insert after a node with value = val
+     * @param value value of the new node
+     */
+    void insertAfter(int val, int value){
+
+    }
+
+    /**
      * delete the first value with value as val
      * @param val   value to be deleted
      */
