@@ -1,5 +1,6 @@
 package com.example.helloworld.interviews.sahil.uber;
 
+import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class DSARound1Mar25 {
@@ -116,4 +117,52 @@ class Solution {
     }
 
 }
+
+// correct approach -
+
+class Solution2 {
+    int N;
+    int minMissing;  // Tracks the smallest missing packet
+    HashSet<Integer> received;
+
+    public Solution2(int N) {
+        this.N = N;
+        this.minMissing = 0; // Start with 0 as the first missing packet
+        this.received = new HashSet<>();
+    }
+
+    public void packageReceived(int pId) {
+        if (pId < 0 || pId >= N) {
+            System.out.println("Invalid package ID - " + pId);
+            return;
+        }
+
+        if (!received.contains(pId)) {
+            received.add(pId);
+
+            // If pId is the current minMissing, move minMissing to the next missing
+            while (received.contains(minMissing)) {
+                minMissing++;
+            }
+        }
+    }
+
+    public int getMinimumMissingPacket() {
+        return minMissing;
+    }
+
+    public static void main(String[] args) {
+        Solution o = new Solution(5);
+
+        o.packageReceived(2);
+        o.packageReceived(3);
+        o.packageReceived(4);
+        System.out.println(o.getMinimumMissingPacket()); // 0
+        o.packageReceived(0);
+        System.out.println(o.getMinimumMissingPacket()); // 1
+        o.packageReceived(1);
+        System.out.println(o.getMinimumMissingPacket()); // 5 (since N=5, all 0-4 are received)
+    }
+}
+
 
