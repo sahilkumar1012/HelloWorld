@@ -1,4 +1,4 @@
-package com.example.helloworld.array.easy;
+package com.example.helloworld.array.algorithms.moorevoting;
 
 /**
  * leetcode 169. Majority Element

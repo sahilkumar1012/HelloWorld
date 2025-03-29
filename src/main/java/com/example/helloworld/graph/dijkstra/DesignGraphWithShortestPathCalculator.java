@@ -4,7 +4,7 @@ package com.example.helloworld.graph.dijkstra;
 import java.util.*;
 
 /**
- * leetcode 2642. Design Graph With Shortest Path Calculator
+ * leetcode 2642. Design Graph With Shortest Path Calculator , Nike , Google, Bloomberg, Samsung
  *
  * There is a directed weighted graph that consists of n nodes numbered from 0 to n - 1. The edges of the graph are initially represented by the given array edges where edges[i] = [fromi, toi, edgeCosti] meaning that there is an edge from fromi to toi with the cost edgeCosti.
  *

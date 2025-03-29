@@ -1,7 +1,9 @@
-package com.example.helloworld.array;
+package com.example.helloworld.array.algorithms.dutchnationalflag;
 
 /**
  * leetcode 75. Sort Colors
+ * leetcode : https://leetcode.com/problems/sort-colors/
+ *
  * https://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/
  * ( Dutch National Flag Problem )
  *

@@ -3,7 +3,7 @@ package com.example.helloworld.bitmanipulation.medium;
 /**
  * leetcode 2683. Neighboring Bitwise XOR
  *
- * code harmony video explanation :
+ * code harmony video explanation : https://youtu.be/l4GyxM4AOp4
  *
  * my leetcode solution : https://leetcode.com/problems/neighboring-bitwise-xor/solutions/6292971/easy-to-understand-xor-properties-java-c-python-detailed-video-explanation
  *

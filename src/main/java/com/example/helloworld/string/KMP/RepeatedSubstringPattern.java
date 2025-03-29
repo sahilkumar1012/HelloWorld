@@ -38,7 +38,12 @@ public class RepeatedSubstringPattern {
 
          our lps should be like this : [0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
          */
-        return (lps[n-1]>0 && lps[n-1]%(n-lps[n-1])==0);
+        // Check if a repeated pattern exists
+        return lps[n - 1] > 0 && n % (n - lps[n - 1]) == 0;
+
+        // or
+        // count number of zeros in the starting = m
+        // lps[n-1] % m == 0
 
     }
 

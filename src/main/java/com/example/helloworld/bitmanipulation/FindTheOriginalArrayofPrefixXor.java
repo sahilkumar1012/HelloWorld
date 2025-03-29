@@ -2,7 +2,7 @@ package com.example.helloworld.bitmanipulation;
 
 /**
  * leetcode 2433. Find The Original Array of Prefix Xor
- * reference solution : https://youtu.be/TDjmp768H3Q
+ * reference solution :
  *
  *
  * You are given an integer array pref of size n. Find and return the array arr of size n that satisfies:
