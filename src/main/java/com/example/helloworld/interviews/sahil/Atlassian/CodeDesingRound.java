@@ -48,14 +48,20 @@ import java.util.Set;
  *  Time  : O(1)
  *  Space : O(n*m)
  */
-class TestSnakeGame{
+
+/**
+ * A simple implementation of the Snake game logic.
+ * - The snake moves in a 2D board.
+ * - It grows every 5 moves.
+ * - The game ends when the snake collides with itself.
+ */
+
+class TestSnakeGame {
     public static void main(String[] args) {
-        Snake snake = new Snake(5,5);
+        Snake snake = new Snake(5, 5); // Board size: 5x5
         snake.moveSnake('L');
         snake.moveSnake('U');
-        System.out.println(snake.isGameOver());
-//        snake.moveSnake('R');
-//        snake.moveSnake('R');
+        System.out.println("Game Over: " + snake.isGameOver());
     }
 }
 
@@ -63,79 +69,73 @@ interface SnakeGame {
     void moveSnake(char snakeDirection);
     boolean isGameOver();
 }
-class Snake implements SnakeGame {
-    boolean state;
-    int counter;
-    int n, m;
-    Deque<int[]> snakeLocation;
-    Set<String> snakeLocationSet;
 
-    public Snake(int n, int m){
+class Snake implements SnakeGame {
+    private boolean isAlive;
+    private int counter;
+    private final int n, m;
+    private final Deque<int[]> snakeLocation;
+    private final Set<String> snakeLocationSet;
+
+    public Snake(int n, int m) {
         this.n = n;
         this.m = m;
-        this.state = true;
+        this.isAlive = true;
         this.counter = 0;
+
+        // Initialize the snake's starting position
         snakeLocation = new LinkedList<>();
-        snakeLocation.addLast(new int[]{0,0});
-        snakeLocation.addLast(new int[]{0,1});
-        snakeLocation.addLast(new int[]{1,1});
+        snakeLocation.addLast(new int[]{0, 0});
+        snakeLocation.addLast(new int[]{0, 1});
+        snakeLocation.addLast(new int[]{1, 1});
 
         snakeLocationSet = new HashSet<>();
         snakeLocationSet.add("0,0");
         snakeLocationSet.add("0,1");
         snakeLocationSet.add("1,1");
     }
-    public void moveSnake(char snakeDirection) {       // L R T D
-        int[] currLocation = snakeLocation.getLast();
-        int[] newLocation = new int[]{currLocation[0], currLocation[1]};
 
-        switch(snakeDirection){
-            case 'L':
-                newLocation[1] = (newLocation[1]-1+m)%m;
-                break;
-            case 'R':
-                newLocation[1] = (newLocation[1]+1)%m;;
-                break;
-            case 'U':
-                newLocation[0] = (newLocation[0]-1+n)%n;     // (0-1)%n,1 -> n,1
-                break;
-            case 'D':
-                newLocation[0] = (newLocation[0]+1)%n;;
-                break;
+    public void moveSnake(char direction) {
+        if (!isAlive) return;
+
+        int[] head = snakeLocation.getLast();
+        int[] newHead = {head[0], head[1]};
+
+        // Compute new head position based on direction
+        switch (direction) {
+            case 'L': newHead[1] = (newHead[1] - 1 + m) % m; break;
+            case 'R': newHead[1] = (newHead[1] + 1) % m; break;
+            case 'U': newHead[0] = (newHead[0] - 1 + n) % n; break;
+            case 'D': newHead[0] = (newHead[0] + 1) % n; break;
         }
 
-        String newLocationString = newLocation[0] + "," + newLocation[1];
-        int[] tail =  snakeLocation.peekFirst();
-        String tailString = tail[0] + "," + tail[1];
+        String newHeadStr = newHead[0] + "," + newHead[1];
+        int[] tail = snakeLocation.peekFirst();
+        String tailStr = tail[0] + "," + tail[1];
 
         counter++;
-        if(counter < 5){
+
+        // Remove tail only if counter < 5 (i.e., no growth yet)
+        if (counter < 5) {
             snakeLocation.pollFirst();
-            snakeLocationSet.remove(tailString);
-        }else if (counter == 5){
-            counter = 0;
+            snakeLocationSet.remove(tailStr);
+        } else if (counter == 5) {
+            counter = 0; // Reset counter after growth
         }
 
-        if( snakeLocationSet.contains(newLocationString) ){
-            System.out.println("inside negative case" + newLocationString);
-//            if( !newLocationString.equals(tailString) )
-            state = false;
+        // Check for self-collision (excluding the tail as it moves)
+        if (snakeLocationSet.contains(newHeadStr) && !newHeadStr.equals(tailStr)) {
+            isAlive = false;
+            System.out.println("Game Over! Snake collided at: " + newHeadStr);
+            return;
         }
 
-        snakeLocation.offerLast(newLocation);
-        snakeLocationSet.add(newLocationString);
-
+        // Move the snake
+        snakeLocation.offerLast(newHead);
+        snakeLocationSet.add(newHeadStr);
     }
 
-    public boolean isGameOver(){
-        return !state;
+    public boolean isGameOver() {
+        return !isAlive;
     }
-
 }
-
-/**
- *
- *  _> 0,1
- *
- * 1,0   1,1
- */

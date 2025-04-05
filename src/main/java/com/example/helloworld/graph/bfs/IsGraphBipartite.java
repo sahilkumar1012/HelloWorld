@@ -45,7 +45,7 @@ import java.util.Queue;
  */
 public class IsGraphBipartite {
 
-    // video for reference : https://youtu.be/ZBhZ1DXGrhA
+    // video for reference from pepcoding : https://youtu.be/ZBhZ1DXGrhA
     public boolean isBipartite(int[][] graph) {
         int n = graph.length;
         int[] visited = new int[n];     // we'll store level in visited array

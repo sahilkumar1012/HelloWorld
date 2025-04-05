@@ -45,20 +45,27 @@ package com.example.helloworld.array.algorithms.dutchnationalflag;
 public class SortColors {
 
     public void sortColors(int[] nums) {
-        int l=-1, m=0, r=nums.length-1;
+        int n = nums.length;
+        int l = 0, r = n-1, k = 0;
 
-        while(m<=r){
-            if(nums[m]==0)
-                swap(nums, ++l, m++);
-            else if(nums[m]==2)
-                swap(nums, m, r--);
-            else
-                m++;
+        while(k <= r){
+            if(nums[k] == 0){
+                swap(nums, k, l);
+                l++;
+                k++;
+            }
+            else if(nums[k] == 2){
+                swap(nums, k, r);
+                r--;
+            }else{
+                k++;
+            }
         }
     }
-    private void swap(int[] nums, int i, int j){
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+
+    private void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
