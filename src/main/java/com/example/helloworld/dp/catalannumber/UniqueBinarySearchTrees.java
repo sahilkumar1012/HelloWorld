@@ -2,7 +2,6 @@ package com.example.helloworld.dp.catalannumber;
 
 /**
  * leetcode 96. Unique Binary Search Trees
- * reference video : https://youtu.be/H1qjjkm3P3c
  *
  *
  * Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.
