@@ -49,3 +49,23 @@ public class UniqueBinarySearchTrees {
 
     }
 }
+class UniqueBinarySearchTreesTopDown {
+    int[] dp;
+
+    public int numTrees(int n) {
+        dp = new int[n+1];
+        return sol(n);
+    }
+
+    private int sol(int n){
+        if(n < 2) return 1;
+
+        if(dp[n] != 0) return dp[n];
+
+        int ans = 0;
+        for(int i=0; i<n; i++){
+            ans += sol(i) * sol(n-i-1);
+        }
+        return dp[n] = ans;
+    }
+}
