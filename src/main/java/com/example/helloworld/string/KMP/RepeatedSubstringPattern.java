@@ -51,6 +51,7 @@ public class RepeatedSubstringPattern {
     public static void main(String[] args) {
         RepeatedSubstringPattern repeatedSubstringPattern = new RepeatedSubstringPattern();
         System.out.println(repeatedSubstringPattern.repeatedSubstringPattern("abcabcabcabc"));
+        System.out.println(repeatedSubstringPattern.repeatedSubstringPattern("abacabacabac"));
     }
 
     /**

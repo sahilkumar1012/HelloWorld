@@ -5,9 +5,21 @@ import java.util.Arrays;
 /**
  * @author sahil
  *
- * Matching problem :
+ * KMP Explanation from Code Harmony : https://youtu.be/I7XZNmoBUKc
+ *
+ * Practice problem :
  * leetcode 28. Find the Index of the First Occurrence in a String
  * https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/
+ *
+ *
+ * 1910. Remove All Occurrences of a Substring
+ * https://leetcode.com/problems/remove-all-occurrences-of-a-substring/
+ * ( keep applying KMP until we do not find any occurance in the text )
+ *
+ *
+ * 459. Repeated Substring Pattern
+ * https://leetcode.com/problems/repeated-substring-pattern/
+ * ( based on LPS array, how we can find the answer with lps array )
  *
  *
  * Do pattern matching using KMP algorithm

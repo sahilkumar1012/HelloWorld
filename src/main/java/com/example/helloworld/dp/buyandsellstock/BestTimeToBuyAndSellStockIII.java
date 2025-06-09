@@ -1,4 +1,4 @@
-package com.example.helloworld.dp;
+package com.example.helloworld.dp.buyandsellstock;
 
 /**
  * leetcode : 123. Best Time to Buy and Sell Stock III

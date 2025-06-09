@@ -1,6 +1,9 @@
 package com.example.helloworld.dp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * leetcode 300. Longest Increasing Subsequence
@@ -43,6 +46,7 @@ import java.util.Arrays;
 public class LongestIncreasingSubsequenceLIS {
 
     /**
+     * Using Array!!
      * Patience Sort Approach:
      * The length of the Longest Increasing Subsequence (LIS) is equal to the number of piles created in the patience sort.
      *
@@ -67,6 +71,33 @@ public class LongestIncreasingSubsequenceLIS {
         }
         return numPiles;  // Return the number of piles, which is the length of the LIS.
     }
+
+    /**
+     * patience sort using ArrayList !!
+     * @param nums
+     * @return
+     */
+    public int lengthOfLIS(int[] nums) {
+        List<Integer> piles = new ArrayList<>();
+
+        for (int num : nums) {
+            int ip = Collections.binarySearch(piles, num);
+
+            if (ip < 0) {
+                ip = -(ip + 1);
+
+                if (ip == piles.size()) {
+                    piles.add(num);
+                } else {
+                    piles.set(ip, num);
+                }
+
+            }
+        }
+
+        return piles.size();
+    }
+
 
     /**
      * Dynamic Programming Approach:
