@@ -1,4 +1,4 @@
-package com.example.helloworld.array.binarysearch;
+package com.example.helloworld.array.binarysearch.hard;
 
 /**
  * leetcode hard 2040. Kth Smallest Product of Two Sorted Arrays, Google interview question
