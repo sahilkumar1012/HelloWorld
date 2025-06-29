@@ -131,3 +131,40 @@ public class LongestIncreasingSubsequenceLIS {
 }
 
 
+class LongestIncreasingSubsequenceLISTopDown {
+    int n;
+    int[] nums;
+    // Map<String, Integer> map;
+    int[][] dp;
+
+    public int lengthOfLIS(int[] nums) {
+        this.nums = nums;
+        this.n = nums.length;
+        // map = new HashMap<>();
+        dp = new int[n][20002];
+
+        return sol(0, -10001);
+    }
+
+    private int sol(int idx, int prev){
+        if(idx == n) return 0;
+
+        // String key = idx + "_" + prev;
+        if(dp[idx][prev+10001] != 0)
+            return dp[idx][prev+10001];
+
+        // take
+        int t = 0;
+        if(nums[idx] > prev){
+            t = 1 + sol(idx+1, nums[idx]);
+        }
+        // not take
+        int nt = sol(idx+1, prev);
+
+        int ans = Math.max(t, nt);
+
+        // map.put(key, ans);
+        dp[idx][prev+10001] = ans;
+        return ans;
+    }
+}
