@@ -1,4 +1,4 @@
-package com.example.helloworld.array.easy;
+package com.example.helloworld.array.algorithms.kadane;
 
 /**
  * leetCode 1749. Maximum Absolute Sum of Any Subarray , Kadane's Algo, Important
