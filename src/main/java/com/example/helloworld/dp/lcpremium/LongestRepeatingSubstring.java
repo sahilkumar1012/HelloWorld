@@ -2,7 +2,24 @@ package com.example.helloworld.dp.lcpremium;
 
 /**
  *
- * leetcode 1062. Longest Repeating Substring , Asked in Google Amazon Meta
+ * leetcode 1062. Longest Repeating Subs * leetcode 1062. Longest Repeating Substring , Asked in Google Amazon Meta
+ *  *
+ *  *
+ *  * Given a string s, return the length of the longest repeating substrings. If no repeating substring exists, return 0.
+ *  *
+ *  *
+ *  *
+ *  * Example 1:
+ *  *
+ *  * Input: s = "abcd"
+ *  * Output: 0
+ *  * Explanation: There is no repeating substring.
+ *  *
+ *  * Example 2:
+ *  *
+ *  * Input: s = "abbaba"
+ *  * Output: 2
+ *  * Explanation: The longest repeating substrings are "ab" and "ba", each of which occurs twice.tring , Asked in Google Amazon Meta
  *
  *
  * Given a string s, return the length of the longest repeating substrings. If no repeating substring exists, return 0.
