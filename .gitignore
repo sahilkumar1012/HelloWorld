@@ -6,3 +6,5 @@ Dump.java
 *.iml
 /src/main/java/com/example/helloworld/dump/DeleteThisFile.java
 /src/main/java/com/example/helloworld/dump/HelloWorld.java
+
+deleteit
