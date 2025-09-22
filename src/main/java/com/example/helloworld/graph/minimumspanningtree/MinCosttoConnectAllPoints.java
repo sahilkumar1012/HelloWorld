@@ -1,4 +1,4 @@
-package com.example.helloworld.advance.minimumSpanningTree;
+package com.example.helloworld.graph.minimumspanningtree;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 /**
- * leetcode 1584. Min Cost to Connect All Points
+ * leetcode 1584. Min Cost to Connect All Points , MST , Prim's Algorithm
  *
  * You are given an array points representing integer coordinates of some points on a 2D-plane, where points[i] = [xi, yi].
  *
