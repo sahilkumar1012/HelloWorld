@@ -1,0 +1,97 @@
+Here’s a list of **easy Trie questions** that are commonly asked in interviews or practice platforms like LeetCode/GFG:
+
+---
+
+### **1. Implement a Trie (Prefix Tree)**
+
+* **Problem:** Implement a Trie with `insert`, `search`, and `startsWith` methods.
+* **Key concepts:** Basic Trie structure, children nodes, boolean end-of-word flag.
+* **Example:**
+
+```text
+insert("apple")
+search("apple") → true
+search("app") → false
+startsWith("app") → true
+```
+
+* **Difficulty:** Easy
+
+---
+
+### **2. Count Words with a Given Prefix**
+
+* **Problem:** Given a list of words, count how many words start with a certain prefix.
+* **Key concepts:** Traverse Trie following prefix, maintain a count.
+* **Example:**
+
+```text
+words = ["apple", "app", "april"]
+prefix = "ap"
+Output → 3
+```
+
+---
+
+### **3. Search for a Word**
+
+* **Problem:** Given a list of words, check if a particular word exists.
+* **Key concepts:** Traverse Trie following letters, check end-of-word flag.
+* **Example:**
+
+```text
+words = ["cat", "dog", "rat"]
+search("cat") → true
+search("bat") → false
+```
+
+---
+
+### **4. Insert and Count Words**
+
+* **Problem:** Implement a Trie and return the number of words inserted.
+* **Key concepts:** Maintain count at root or nodes.
+* **Example:**
+
+```text
+insert("apple")
+insert("app")
+Output total words → 2
+```
+
+---
+
+### **5. Longest Common Prefix**
+
+* **Problem:** Find the longest common prefix of an array of strings using Trie.
+* **Key concepts:** Build Trie, traverse while only one child exists and not end-of-word.
+* **Example:**
+
+```text
+words = ["flower","flow","flight"]
+Output → "fl"
+```
+
+---
+
+### **6. Auto-complete / Prefix Search**
+
+* **Problem:** Given a prefix, return all words in Trie that start with that prefix.
+* **Key concepts:** DFS/BFS from the prefix node.
+* **Example:**
+
+```text
+words = ["dog","deer","deal"]
+prefix = "de"
+Output → ["deer","deal"]
+```
+
+---
+
+### **Tips for Easy Trie Questions**
+
+1. **Use an array of size 26** for lowercase letters if words contain only `a-z`.
+2. **Mark end-of-word** in Trie nodes to differentiate complete words from prefixes.
+3. **DFS / BFS** helps in retrieval problems like autocomplete or listing words.
+
+---
