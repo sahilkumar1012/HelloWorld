@@ -92,9 +92,9 @@ class LRUCacheCustom {
         return res;
     }
 
-    private Map<Integer, DLinkedNode> cache = new HashMap<>();
+    private final Map<Integer, DLinkedNode> cache = new HashMap<>();
     private int size;
-    private int capacity;
+    private final int capacity;
     private DLinkedNode head, tail;
 
     public LRUCacheCustom(int capacity) {

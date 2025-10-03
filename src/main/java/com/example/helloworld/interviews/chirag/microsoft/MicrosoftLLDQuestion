@@ -1,0 +1,11 @@
+microsoft AA round of iterview :
+
+LLD question :
+
+Low level Design of Battleship game. Using different classes(methods, attributes required) simulate the play stage of the game
+
+#Each player will have a board(n*m) and x ships of identical dimensions.
+#In pre game phase, players will place ships of their board and are not aware of other player's ship placement.
+#In game phase, its turn based game and in each turn player will attack a cell and if there is a ship on that cell,
+#that part of ship is damaged and if all parts of ship are damaged, then ship is destroyed.
+#If all ships are destroyed then player will loose the game

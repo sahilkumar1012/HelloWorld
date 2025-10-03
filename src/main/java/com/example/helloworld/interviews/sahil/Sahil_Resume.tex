@@ -1,0 +1,169 @@
+%-------------------------
+% Resume in Latex
+% Author : Sahil Kumar
+% Based on sb2nov/resume template
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+    \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+% Custom commands
+\newcommand{\resumeItem}[1]{\item\normalsize{#1}}
+\newcommand{\resumeSubheading}[4]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+
+
+    \begin{center}
+        \textbf{\Huge \scshape Sahil} \\ \vspace{4pt}
+        \normalsize Software Engineer with 8+ years of experience in building distributed backend systems and cloud solutions \\ \vspace{6pt}
+        \small
+        \faIcon{envelope} \href{mailto:sahil.inbox@icloud.com}{sahil.inbox@icloud.com} \quad $|$ \quad
+        \faIcon{phone} +91-8447476029 \quad $|$ \quad
+        \faIcon{linkedin} \href{https://linkedin.com/in/sahil1012}{sahil1012} \quad $|$ \quad
+        \faIcon{github} \href{https://github.com/sahilkumar1012}{sahilkumar1012}
+    \end{center}
+
+
+%-----------EXPERIENCE-----------
+
+
+    \section{Experience}
+    \resumeSubHeadingListStart
+
+    \resumeSubheading
+    {Google}{Feb 2024 -- Dec 2024}
+    {Software Engineer III}{Pune, India}
+    \resumeItemListStart
+    \resumeItem{Integrated \textbf{VPCSC (Virtual Private Cloud Service Controls)} to secure Bare Metal infrastructure for \textbf{VMware on Google Cloud}, restricting access to authorized VPCs only.}
+    \resumeItem{Implemented networking features to \textbf{secure customer VPCs}, ensuring all traffic stays within the customer's VPC and preventing any calls from going outside or entering from external networks.}
+    \resumeItemListEnd
+
+
+
+    \resumeSubheading
+    {Amazon Development Centre Pvt. Ltd.}{Jul 2022 -- Dec 2023}
+    {Software Development Engineer II}{Bangalore, India}
+    \resumeItemListStart
+    \resumeItem{Designed and implemented \textbf{AI-powered semantic search} for app/game discovery using transformer-based models and vector embeddings, improving search relevance and user experience.}
+    \resumeItem{Enabled \textbf{contextual query understanding}, allowing natural language searches (e.g., “top movie watching apps”) and increasing user engagement.}
+    \resumeItem{Led the \textbf{NAWS migration of Amazon Creator}, transitioning the application to a modern Native AWS Architecture.}
+    \resumeItem{Leveraged \textbf{AWS Fargate} and multiple AWS native services to improve \textbf{scalability, performance, and cost-efficiency}, ensuring minimal disruption during migration.}
+    \resumeItemListEnd
+
+
+
+    \resumeSubheading
+    {Adobe Inc.}{Mar 2021 -- May 2022}
+    {Member of Technical Staff II}{Noida, India}
+    \resumeItemListStart
+    \resumeItem{\textbf{Led the migration of CPF Engine} from a legacy C++ implementation to a modern Java-based framework, improving \textbf{maintainability, performance, and scalability} of critical PDF operations.}
+    \resumeItem{Migrated and optimized the \textbf{Export PDF Worker}, responsible for handling premium PDF operations including \textbf{exporting PDFs to Office formats}, ensuring high \textbf{reliability} and \textbf{efficiency} for all premium document workflows.}
+    \resumeItem{Collaborated with cross-functional and external teams, including \textbf{Microsoft}, to implement modular architecture and manage base images, enabling faster feature rollouts and enhanced \textbf{system reliability}.}
+    \resumeItemListEnd
+
+
+
+    \resumeSubheading
+    {STMicroelectronics Pvt. Ltd.}{Jan 2017 -- Mar 2021}
+    {Software Developer}{Noida, India}
+    \resumeItemListStart
+    \resumeItem{Worked in the in-house IT, developing and maintaining enterprise applications supporting multiple business domains.}
+    \resumeItem{Engineered critical changes in the \textbf{PRMIS application}, responsible for STMicroelectronics product data, \textbf{product classifications}, and metadata, improving data accuracy and operational efficiency.}
+    \resumeItemListEnd
+
+
+    \resumeSubHeadingListEnd
+
+
+%-----------EDUCATION-----------
+
+
+    \section{Education}
+    \resumeSubHeadingListStart
+    \resumeSubheading
+    {YMCA University of Science and Technology, Faridabad}{Aug 2013 -- Jun 2017}
+    {Bachelor of Technology, Computer Engineering \quad \textbf{CGPA: 8.01/10}}{}
+    \resumeSubHeadingListEnd
+
+%-------------------------------------------
+
+
+%-----------SKILLS-----------
+
+
+    \section{Skills}\vspace{-0.3cm}
+    \begin{multicols}{2}
+        \setlength{\columnsep}{0.5cm} % adjust spacing between columns
+        \textbf{Core:}
+        Data Structures \& Algorithms, Problem Solving, System Design \& Architecture, OOP\\[0.1cm]
+
+        \textbf{Languages:}
+        Java, C/C++, Go, Python, SQL\\[0.1cm]
+
+        \textbf{Frameworks \& Tools:}
+        Spring Boot, Struts, JSP, Hibernate, React, Angular, ExtJS, Docker, Git\\[0.1cm]
+
+        \textbf{Databases:}
+        MySQL, MongoDB, Redis, Amazon Redshift, Firebase\\[0.1cm]
+
+        \textbf{Cloud:}
+        AWS, GCP
+    \end{multicols}
+
+
+\end{document}
