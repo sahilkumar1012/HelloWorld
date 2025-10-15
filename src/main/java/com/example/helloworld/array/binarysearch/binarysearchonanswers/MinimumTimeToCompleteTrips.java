@@ -1,4 +1,4 @@
-package com.example.helloworld.array.binarysearch;
+package com.example.helloworld.array.binarysearch.binarysearchonanswers;
 
 /**
  * leetcode 2187. Minimum Time to Complete Trips

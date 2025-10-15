@@ -1,4 +1,4 @@
-package com.example.helloworld.array.binarysearch;
+package com.example.helloworld.array.binarysearch.binarysearchonanswers;
 
 /**
  * leetcode 875. Koko Eating Bananas

@@ -1,4 +1,4 @@
-package com.example.helloworld.array.binarysearch;
+package com.example.helloworld.array.binarysearch.binarysearchonanswers;
 
 /**
  * leetcode 1760. Minimum Limit of Balls in a Bag, Binary Search on Answers, Flipkart , Amazon
