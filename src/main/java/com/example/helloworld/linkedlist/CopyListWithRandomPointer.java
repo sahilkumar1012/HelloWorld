@@ -47,6 +47,7 @@ package com.example.helloworld.linkedlist;
  * Node.random is null or is pointing to some node in the linked list.
  */
 public class CopyListWithRandomPointer {
+
     class Node {
         int val;
         Node next;
@@ -60,35 +61,77 @@ public class CopyListWithRandomPointer {
     }
 
     public Node copyRandomList(Node head) {
-        if(head == null ) return head;
 
-        Node newList = new Node(0), pred = newList;
+        // Edge case: empty list
+        if (head == null) return null;
+
         Node temp = head;
-        // Map<Node, Node> map = new HashMap<>();      // old vs new node
 
-        while(temp != null){
-            Node node = new Node(temp.val);
-            node.next = temp.next;
-            temp.next = node;
+        /**
+         * ----------------------------------------------------
+         * Step 1: Insert copied nodes between original nodes.
+         * ----------------------------------------------------
+         *
+         * For each original node temp:
+         *   - Create a copy newNode
+         *   - Insert newNode immediately after temp
+         *
+         * Example:
+         * Original: A -> B -> C
+         * After Step 1: A -> A' -> B -> B' -> C -> C'
+         */
+        while (temp != null) {
+            Node copy = new Node(temp.val);
 
-            temp = temp.next.next;
+            copy.next = temp.next; // link copy to next original node
+            temp.next = copy;      // link original node to copy
+
+            temp = copy.next;      // move to next original node
         }
 
+        /**
+         * -------------------------------------------
+         * Step 2: Set random pointers for copied nodes
+         * -------------------------------------------
+         *
+         * If temp.random = R, then:
+         *   temp.next.random = R.next
+         */
         temp = head;
-        while(temp != null){
-            if(temp.random != null)
+        while (temp != null) {
+            if (temp.random != null) {
                 temp.next.random = temp.random.next;
-            temp = temp.next.next;
+            }
+            temp = temp.next.next; // jump to next original node
         }
+
+        /**
+         * ------------------------------------------------
+         * Step 3: Separate original list and copied list.
+         * ------------------------------------------------
+         *
+         * Restore original list:
+         *   temp.next = temp.next.next
+         *
+         * Build copied list using a dummy head.
+         */
+        Node dummy = new Node(0);
+        Node copyTail = dummy;
         temp = head;
-        while(temp != null){
-            pred.next = temp.next;
-            temp.next = temp.next.next;     // keep older list in actual state
 
-            pred = pred.next;
-            temp = temp.next;
+        while (temp != null) {
+            Node copy = temp.next;
+
+            // Attach copy to the new list
+            copyTail.next = copy;
+            copyTail = copy;
+
+            // Restore original list
+            temp.next = copy.next;
+
+            temp = temp.next; // move to next original node
         }
 
-        return newList.next;
+        return dummy.next; // return head of copied list
     }
 }
