@@ -1,0 +1,156 @@
+what is object?
+
+any logical or physical entity with certain set of features and beh. = kuch bhi
+
+
+
+c lang - procedural lang. / functions likho and apna kaam karwao
+
+starting c++ - introduced oops. / think in terms of objects.
+
+
+
+DBMS - data base management system.
+    - RDBMS ( relational database )
+        ( tables )
+
+Mentor
+Mentee
+Session
+Notes
+
+
+
+Table - Sessions
+
+id  title               mentor  mentees notes           recordinglink
+1   what is array       mentor_id   [yug..] [notes1.txt]    null
+
+
+Table - Mentor
+
+mentor id ....
+
+
+
+
+id = primary key
+mentor_id in sessions table is - foreign key
+
+
+------------
+
+thinking of all the objects in the system.
+
+
+entities.
+
+
+
+oops concepts -
+
+1. encapsulation
+2. inheritance
+3. abstraction
+4. poly
+
+
+
+vehicle
+
+car
+
+bike
+
+
+----
+
+
+object -> class
+
+class Vehicle {
+    owner_id;
+    data members     - data
+    data menthods    - functions
+}
+
+access specifiers -> abstraction
+
+
+popymorphism
+
+    - one function , multiple scenarios.
+    - menthod overloading is an example of polymorphism.
+    add(int , int)
+    add(string , string)
+
+
+yes.
+
+
+
+class parent{
+    fun(){}
+}
+
+class child{
+    fun(){}     // override.
+}
+
+
+
+polymorphism
+
+1. com
+    overloading
+
+
+2. run
+    overriding
+
+
+method/data  access instance(obj)
+
+    obj->
+
+
+class relation
+
+agreegation -   sesssion class mai mentor ka reference
+
+composition  - session  >  notes
+
+oops concepts - every oo lang.
+
+
+
+Easy - padh liya , aa gaya
+Essential - aana hi chahiye
+
+
+--- mota paisa? nahi
+
+kitna aana chahiye? basics/fundamental understanding.
+    champ hona chahiye ? no
+
+theory - done
+
+
+do some practicle applications
+
+assignment -
+practice inheritance by writing classes -
+
+- 1 parent, 3 child, create child instance and hold in parent reference.
+
+
+- p private age;
+
+- Different animals demonstrate polymorphism, where the same speak() function produces different outputs such as Bark, Meow, and Moo depending on whether the object is of type Dog, Cat, or Cow.
+
+- have a converstaion with chatgpt.
+
+
+
+
+version control system..
