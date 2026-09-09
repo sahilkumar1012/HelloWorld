@@ -31,22 +31,44 @@ public class MaxHeap {
         }
     }
 
-    // Percolate Down
+    // Percolate Down ( Recursive )
+//    private void percolateDown(int index) {
+//        int largest = index;
+//        int left = leftChild(index);
+//        int right = rightChild(index);
+//
+//        if (left < size && heap[left] > heap[largest]) {
+//            largest = left;
+//        }
+//        if (right < size && heap[right] > heap[largest]) {
+//            largest = right;
+//        }
+//
+//        if (largest != index) {
+//            swap(index, largest);
+//            percolateDown(largest);
+//        }
+//    }
+
     private void percolateDown(int index) {
-        int largest = index;
-        int left = leftChild(index);
-        int right = rightChild(index);
+        while (true) {
+            int largest = index;
+            int left = leftChild(index);
+            int right = rightChild(index);
 
-        if (left < size && heap[left] > heap[largest]) {
-            largest = left;
-        }
-        if (right < size && heap[right] > heap[largest]) {
-            largest = right;
-        }
+            if (left < size && heap[left] > heap[largest]) {
+                largest = left;
+            }
+            if (right < size && heap[right] > heap[largest]) {
+                largest = right;
+            }
 
-        if (largest != index) {
+            if (largest == index) {
+                break;
+            }
+
             swap(index, largest);
-            percolateDown(largest);
+            index = largest;
         }
     }
 
